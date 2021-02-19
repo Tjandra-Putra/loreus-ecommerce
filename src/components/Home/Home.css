@@ -1,0 +1,109 @@
+.hero {
+	margin-left: 2.2vw;
+}
+
+.left-area {
+	background-color: #f2f2f2;
+	height: 78vh;
+	padding: 70px;
+}
+
+.right-area img {
+	height: 78vh;
+}
+
+.title {
+	font-size: 2.7em;
+	font-weight: 500;
+}
+
+.sub-title {
+	padding-top: 15vh;
+	font-style: italic;
+	font-weight: 500;
+}
+
+.description {
+	text-align: justify;
+}
+
+#btn-intro {
+	border-radius: 100px;
+	border: 1.5px solid black;
+	font-weight: 500;
+}
+
+.featured-product-wrapper {
+	margin-top: 5vh;
+}
+
+.featured {
+	margin-top: 15vh;
+}
+
+.featured-description {
+	max-width: 25rem;
+	margin: auto;
+	font-style: italic;
+}
+
+.product-title {
+	margin-top: 0.8rem;
+}
+
+.product-price {
+	font-weight: 500;
+}
+
+#featured-button {
+	border-radius: 100px;
+	border: 1.5px solid black;
+	font-weight: 500;
+	margin-top: 2rem;
+}
+
+.best-seller {
+	margin-top: 15vh;
+}
+
+.bottom-left-btn {
+	position: absolute;
+	bottom: 30px;
+	left: 50px;
+}
+
+.botton-left-title {
+	position: absolute;
+	bottom: 70px;
+	left: 10px;
+	color: white;
+	font-weight: 600;
+	font-size: 2em;
+}
+
+.btn-trending {
+	border-radius: 100px;
+}
+
+.news-letter {
+	margin-top: 15vh;
+}
+
+.news-letter-description {
+	max-width: 25rem;
+	margin: auto;
+	font-style: italic;
+}
+
+.news-letter-wrapper {
+	margin-top: 5vh;
+	/* max-width: 45vw; */
+}
+
+.form-input {
+	width: 40vw;
+}
+
+.btn-news-letter {
+	border-radius: 0px !important;
+}
