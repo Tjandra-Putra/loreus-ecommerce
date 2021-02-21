@@ -41,7 +41,7 @@ const products = () => {
 		<Container>
 			<Row>
 				{all_products.map((product) => (
-					<Col xs={12} sm={6} md={4} lg={4}>
+					<Col xs={12} sm={6} md={4} lg={4} key={product.id}>
 						<Product product={product} />
 					</Col>
 				))}

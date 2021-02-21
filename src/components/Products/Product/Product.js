@@ -6,7 +6,7 @@ const product = (props) => {
 	return (
 		<Container>
 			<LinkContainer to={{ pathname: `products/${props.product.name}`, query: { id: props.product.id } }}>
-				<Card className="my-4" key={props.product.id}>
+				<Card className="my-4">
 					<Card.Img variant="top" src={props.product.imgUrl} />
 					<Card.Body>
 						<Card.Title>{props.product.name}</Card.Title>

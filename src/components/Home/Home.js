@@ -112,7 +112,7 @@ const home = () => (
 				<Row>
 					<Col>
 						<img src={trending_1} className="img-fluid trending-img" alt="introImage" />
-						<div class="bottom-left-btn">
+						<div className="bottom-left-btn">
 							<div className="botton-left-title">Abigail Hoodie Summer</div>
 							<Button variant="light" className="btn-trending">
 								Shop Now
@@ -121,7 +121,7 @@ const home = () => (
 					</Col>
 					<Col>
 						<img src={trending_2} className="img-fluid trending-img" alt="introImage" />
-						<div class="bottom-left-btn">
+						<div className="bottom-left-btn">
 							<div className="botton-left-title">Abigail Engineered 23</div>
 							<Button variant="light" className="btn-trending">
 								Shop Now

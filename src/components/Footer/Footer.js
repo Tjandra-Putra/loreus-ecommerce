@@ -34,17 +34,17 @@ const footer = () => (
 				</Col>
 				<Col>
 					<h6 className="mb-4">CONNECT WITH US</h6>
-					<div class="d-flex flex-row bd-highligh">
-						<div class="pr-2 bd-highlight">
+					<div className="d-flex flex-row bd-highligh">
+						<div className="pr-2 bd-highlight">
 							<img src={instagram_icon} className="img-fluid" alt="instagram_icon" />
 						</div>
-						<div class="pr-2 bd-highlight">
+						<div className="pr-2 bd-highlight">
 							<img src={facebook_icon} className="img-fluid" alt="facebook_icon" />
 						</div>
-						<div class="pr-2 bd-highlight">
+						<div className="pr-2 bd-highlight">
 							<img src={twitter_icon} className="img-fluid" alt="twitter_icon" />
 						</div>
-						<div class="pr-2 bd-highlight">
+						<div className="pr-2 bd-highlight">
 							<img src={pinterest_icon} className="img-fluid" alt="pinterest_icon" />
 						</div>
 					</div>
