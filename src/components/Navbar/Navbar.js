@@ -6,45 +6,60 @@ import heartImg from '../../assets/Image/heart.png';
 import bagImg from '../../assets/Image/shopping-bag.png';
 import userImg from '../../assets/Image/user.png';
 
-const navbar = () => (
-	<Navbar collapseOnSelect expand="lg" bg="light" variant="light" className="Navbar py-4">
-		<Container>
-			<Navbar.Brand href="#home" className="font-weight-bold">
-				LOREUS.
-			</Navbar.Brand>
-			<Navbar.Toggle aria-controls="responsive-navbar-nav" />
-			<Navbar.Collapse id="responsive-navbar-nav">
-				<ul className="navbar-nav mr-auto">
-					<Nav.Link className="mx-2 nav-link" href="#features">
-						HOME
-					</Nav.Link>
-					<Nav.Link className="mx-2 nav-link" href="#pricing">
-						SHOP
-					</Nav.Link>
-					<Nav.Link className="mx-2 nav-link" href="#features">
-						COLLECTION
-					</Nav.Link>
-					<Nav.Link className="mx-2 nav-link" href="#features">
-						BLOG
-					</Nav.Link>
-					<Nav.Link className="mx-2 nav-link" href="#features">
-						PAGES
-					</Nav.Link>
-				</ul>
-				<ul className="navbar-nav ml-auto">
-					<Nav.Link href="#deets">
-						<img src={heartImg} className="img-fluid" alt="introImage" width="20" />
-					</Nav.Link>
-					<Nav.Link href="#deets">
-						<img src={bagImg} className="img-fluid" alt="introImage" width="20" />
-					</Nav.Link>
-					<Nav.Link href="#memes">
-						<img src={userImg} className="img-fluid" alt="introImage" width="20" />
-					</Nav.Link>
-				</ul>
-			</Navbar.Collapse>
-		</Container>
-	</Navbar>
-);
+import { withRouter } from 'react-router';
+import { LinkContainer } from 'react-router-bootstrap';
 
-export default navbar;
+const navbar = (props) => {
+	const { location } = props; //add this
+
+	return (
+		<Navbar
+			collapseOnSelect
+			expand="lg"
+			bg="light"
+			variant="light"
+			className="Navbar py-4"
+			activeKey={location.pathname}
+		>
+			<Container>
+				<LinkContainer to="/">
+					<Navbar.Brand className="font-weight-bold">
+						LOREUS<span className="text-danger">.</span>
+					</Navbar.Brand>
+				</LinkContainer>
+				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
+				<Navbar.Collapse id="responsive-navbar-nav">
+					<ul className="navbar-nav mr-auto">
+						<LinkContainer to="/products">
+							<Nav.Link className="mx-2 nav-link">SHOP</Nav.Link>
+						</LinkContainer>
+						<Nav.Link className="mx-2 nav-link" to="/collection">
+							COLLECTION
+						</Nav.Link>
+						<Nav.Link className="mx-2 nav-link" to="/blog">
+							BLOG
+						</Nav.Link>
+						<Nav.Link className="mx-2 nav-link" to="/pages">
+							PAGES
+						</Nav.Link>
+					</ul>
+					<ul className="navbar-nav ml-auto">
+						<Nav.Link to="/favourite">
+							<img src={heartImg} className="img-fluid" alt="introImage" width="20" />
+						</Nav.Link>
+						<LinkContainer to="/cart">
+							<Nav.Link>
+								<img src={bagImg} className="img-fluid" alt="introImage" width="20" />
+							</Nav.Link>
+						</LinkContainer>
+						<Nav.Link to="/login">
+							<img src={userImg} className="img-fluid" alt="introImage" width="20" />
+						</Nav.Link>
+					</ul>
+				</Navbar.Collapse>
+			</Container>
+		</Navbar>
+	);
+};
+
+export default withRouter(navbar);
