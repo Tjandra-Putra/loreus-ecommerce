@@ -8,7 +8,7 @@ import userImg from '../../assets/Image/user.png';
 
 import { LinkContainer } from 'react-router-bootstrap';
 
-const navbar = () => {
+const navbar = (props) => {
 	return (
 		<Navbar collapseOnSelect expand="lg" bg="light" variant="light" className="Navbar py-4">
 			<Container>
@@ -33,17 +33,20 @@ const navbar = () => {
 							PAGES
 						</Nav.Link>
 					</ul>
-					<ul className="navbar-nav ml-auto">
+					<ul className="navbar-nav ml-auto nav-icons">
 						<Nav.Link to="/favourite">
-							<img src={heartImg} className="img-fluid" alt="introImage" width="20" />
+							<img src={heartImg} className="img-fluid" alt="introImage" width="25" />
 						</Nav.Link>
 						<LinkContainer to="/cart">
 							<Nav.Link>
-								<img src={bagImg} className="img-fluid" alt="introImage" width="20" />
+								<img src={bagImg} className="img-fluid" alt="introImage" width="25" />
+								<div className="quantity">
+									{props.quantity}
+								</div>
 							</Nav.Link>
 						</LinkContainer>
 						<Nav.Link to="/login">
-							<img src={userImg} className="img-fluid" alt="introImage" width="20" />
+							<img src={userImg} className="img-fluid" alt="introImage" width="25" />
 						</Nav.Link>
 					</ul>
 				</Navbar.Collapse>
