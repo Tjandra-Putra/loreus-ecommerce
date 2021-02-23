@@ -10,6 +10,14 @@ const productDetail = (props) => {
 
 	const product = props.products.filter((item) => item.id === prodId);
 
+	let btnDisable = false;
+
+	const isAddedToCart = () => {
+		if (props.selectedItems((item) => item.id === prodId)) {
+			btnDisable = true;
+		}
+	};
+
 	return (
 		<Container>
 			{product.map((item) => (
@@ -40,6 +48,7 @@ const productDetail = (props) => {
 									size="lg"
 									block
 									onClick={() => props.addToCart(item)}
+									disabled={btnDisable}
 								>
 									Add to bag
 								</Button>

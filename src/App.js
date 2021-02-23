@@ -87,11 +87,21 @@ class App extends Component {
 		const itemArray = [ ...this.state.selectedItems ];
 		itemArray[itemIndex] = itemObj;
 
-		this.setState({ selectedItems: itemArray });
+		// update total price
+		const oldTotalPrice = this.state.totalPrice;
+		const newTotalPrice = oldTotalPrice + itemObj.price * itemObj.quantity;
+
+		this.setState({ selectedItems: itemArray, totalPrice: newTotalPrice });
 
 		console.log(event, this.state.selectedItems);
 
 		console.log('price : $ ' + itemObj.quantity * itemObj.price);
+	};
+
+	removeCartItemHandler = (itemIndex) => {
+		const allItems = [ ...this.state.selectedItems ];
+		allItems.splice(itemIndex, 1);
+		this.setState({ selectedItems: allItems });
 	};
 
 	render() {
@@ -108,6 +118,7 @@ class App extends Component {
 							selectedItems={this.state.selectedItems}
 							totalPrice={this.state.totalPrice}
 							editQuantityHandler={this.editQuantityHandler}
+							removeCartItemHandler={this.removeCartItemHandler}
 						/>
 					</Route>
 					<Route exact path="/products/:prodId">

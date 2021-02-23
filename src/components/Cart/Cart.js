@@ -3,7 +3,7 @@ import { Container, Row, Col, Alert, Button, Table, DropdownButton, Dropdown } f
 import './Cart.css';
 
 const cart = (props) => {
-	let loadedProducts = props.selectedItems.map((item) => (
+	let loadedProducts = props.selectedItems.map((item, index) => (
 		<tr key={item.id} className="border-bottom">
 			<td>
 				<img src={item.imgUrl} className="img-fluid" alt="introImage" width="100" />
@@ -26,20 +26,17 @@ const cart = (props) => {
 				</div>
 			</td>
 			<td>S${item.price}</td>
-			<td className="btn-remove">Remove</td>
+			<td>
+				<div className="btn-remove" onClick={() => props.removeCartItemHandler(index)}>
+					Remove
+				</div>
+			</td>
 		</tr>
 	));
 
 	if (loadedProducts.length === 0) {
 		loadedProducts = <p>There are no items in your bag.</p>;
 	}
-
-	// const editQuantityHandler = (event) => {
-	// 	props.selectedItems.map((item) => {
-	// 		item.quantity = event;
-	// 	});
-	// 	console.log(event);
-	// };
 
 	return (
 		<Container>
