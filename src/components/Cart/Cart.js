@@ -1,33 +1,57 @@
 import React from 'react';
-import { Container, Row, Col, Card, Button, Table } from 'react-bootstrap';
+import { Container, Row, Col, Alert, Button, Table, DropdownButton, Dropdown } from 'react-bootstrap';
 import './Cart.css';
 
 const cart = (props) => {
+	let loadedProducts = props.selectedItems.map((item) => (
+		<tr key={item.id} className="border-bottom">
+			<td>
+				<img src={item.imgUrl} className="img-fluid" alt="introImage" width="100" />
+			</td>
+			<td>{item.name}</td>
+			<td>
+				<div className="d-flex flex-row bd-highlight mb-3">
+					<div className="bd-highlight">
+						<DropdownButton
+							id="dropdown-basic-button"
+							title="Quantity"
+							onSelect={(event) => props.editQuantityHandler(event, item.id)}
+						>
+							<Dropdown.Item eventKey="1">1</Dropdown.Item>
+							<Dropdown.Item eventKey="2">2</Dropdown.Item>
+							<Dropdown.Item eventKey="3">3</Dropdown.Item>
+						</DropdownButton>
+					</div>
+					<div className="pl-2 bd-highlight">{item.quantity}</div>
+				</div>
+			</td>
+			<td>S${item.price}</td>
+			<td className="btn-remove">Remove</td>
+		</tr>
+	));
+
+	if (loadedProducts.length === 0) {
+		loadedProducts = <p>There are no items in your bag.</p>;
+	}
+
+	// const editQuantityHandler = (event) => {
+	// 	props.selectedItems.map((item) => {
+	// 		item.quantity = event;
+	// 	});
+	// 	console.log(event);
+	// };
+
 	return (
 		<Container>
+			<Alert variant="dark" dismissible style={{ backgroundColor: 'rgb(247, 247, 247)', border: 'none' }}>
+				HAVE A PROMO CODE? You will be able to apply it on the payment page during checkout.
+			</Alert>
 			<Row>
 				<Col md={8} className="">
 					<h5>Bag</h5>
 
-					<Table striped borderless hover>
-						<thead>
-							<tr>
-								<td>No.</td>
-								<td>Item</td>
-								<td>Quantity</td>
-								<td>Price</td>
-							</tr>
-						</thead>
-						<tbody>
-							{props.selectedItems.map((item, index) => (
-								<tr key={index}>
-									<td>{index}</td>
-									<td>{item.name}</td>
-									<td>{item.quantity}</td>
-									<td>S${item.price}</td>
-								</tr>
-							))}
-						</tbody>
+					<Table borderless hover>
+						<tbody>{loadedProducts}</tbody>
 					</Table>
 				</Col>
 				<Col md={4} className="">

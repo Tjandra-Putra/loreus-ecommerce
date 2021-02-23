@@ -3,3 +3,14 @@
 	border: 1.5px solid black;
 	font-weight: 500;
 }
+
+#dropdown-basic-button {
+	background-color: unset !important;
+	color: black;
+	border: none;
+	padding: 0;
+}
+
+.btn-remove {
+	color: red;
+}

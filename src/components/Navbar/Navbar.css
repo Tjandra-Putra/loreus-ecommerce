@@ -19,10 +19,10 @@
 
 .quantity {
 	transform: translateY(-19px);
-	padding-left: 7.5px;
-	font-weight: 600 !important;
-	font-size: 15px;
-	color: red;
+	padding-left: 8px;
+	font-weight: 400 !important;
+	font-size: 14px;
+	color: black;
 }
 
 .nav-icons {

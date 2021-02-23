@@ -56,8 +56,11 @@ class App extends Component {
 	};
 
 	addToCartHandler = (productObject) => {
-		productObject.quantity = 0;
+		if (this.state.selectedItems.length === 0) {
+			productObject.quantity = 1; // add new property in the object
+		}
 
+		productObject.quantity = 1;
 		let array = [ ...this.state.selectedItems ];
 		array.push(productObject);
 
@@ -71,17 +74,41 @@ class App extends Component {
 		console.log(this.state.selectedItems.length);
 	};
 
+	editQuantityHandler = (event, itemId) => {
+		// index value
+		const itemIndex = this.state.selectedItems.findIndex((item) => {
+			return item.id === itemId;
+		});
+
+		const itemObj = { ...this.state.selectedItems[itemIndex] };
+
+		itemObj.quantity = event;
+
+		const itemArray = [ ...this.state.selectedItems ];
+		itemArray[itemIndex] = itemObj;
+
+		this.setState({ selectedItems: itemArray });
+
+		console.log(event, this.state.selectedItems);
+
+		console.log('price : $ ' + itemObj.quantity * itemObj.price);
+	};
+
 	render() {
 		return (
 			<Router>
 				<div className="App">
-					<Navbar quantity={this.state.selectedItems.length}/>
+					<Navbar quantity={this.state.selectedItems.length} />
 					<Route exact path="/" component={Home} />
 					<Route exact path="/products">
 						<Products products={this.all_products} />
 					</Route>
 					<Route Route exact path="/cart">
-						<Cart selectedItems={this.state.selectedItems} totalPrice={this.state.totalPrice} />
+						<Cart
+							selectedItems={this.state.selectedItems}
+							totalPrice={this.state.totalPrice}
+							editQuantityHandler={this.editQuantityHandler}
+						/>
 					</Route>
 					<Route exact path="/products/:prodId">
 						<ProductDetail products={this.all_products} addToCart={this.addToCartHandler} />
