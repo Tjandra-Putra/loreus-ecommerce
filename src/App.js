@@ -56,22 +56,44 @@ class App extends Component {
 	};
 
 	addToCartHandler = (productObject) => {
+		// Default value of quantity is 1 when cart is empty
 		if (this.state.selectedItems.length === 0) {
-			productObject.quantity = 1; // add new property in the object
+			productObject.quantity = 1;
 		}
 
-		productObject.quantity = 1;
-		let array = [ ...this.state.selectedItems ];
-		array.push(productObject);
+		// if item has already been added to shopping cart, only updates the quantity
+		if (this.state.selectedItems.some((item) => item.id === productObject.id)) {
+			const itemIndex = this.state.selectedItems.findIndex((item) => {
+				return item.id === productObject.id;
+			});
 
-		// update total price
-		const oldTotalPrice = this.state.totalPrice;
-		const newTotalPrice = oldTotalPrice + productObject.price;
+			productObject.quantity += 1;
 
-		this.setState({ selectedItems: array, totalPrice: newTotalPrice });
+			const itemArray = [ ...this.state.selectedItems ];
+			itemArray[itemIndex] = productObject;
+
+			// update total price
+			const oldTotalPrice = this.state.totalPrice;
+			const newTotalPrice = oldTotalPrice + productObject.price * productObject.quantity;
+
+			this.setState({ selectedItems: itemArray, totalPrice: newTotalPrice });
+		} else {
+			// Adding new items to shopping cart
+			productObject.quantity = 1;
+			let array = [ ...this.state.selectedItems ];
+			array.push(productObject);
+
+			// update total price
+			const oldTotalPrice = this.state.totalPrice;
+			const newTotalPrice = oldTotalPrice + productObject.price;
+
+			this.setState({ selectedItems: array, totalPrice: newTotalPrice });
+
+			console.log(this.state.selectedItems);
+			console.log(this.state.selectedItems.length);
+		}
 
 		console.log(this.state.selectedItems);
-		console.log(this.state.selectedItems.length);
 	};
 
 	editQuantityHandler = (event, itemId) => {
