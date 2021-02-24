@@ -74,7 +74,7 @@ class App extends Component {
 
 			// update total price
 			const oldTotalPrice = this.state.totalPrice;
-			const newTotalPrice = oldTotalPrice + productObject.price * productObject.quantity;
+			const newTotalPrice = oldTotalPrice + productObject.price;
 
 			this.setState({ selectedItems: itemArray, totalPrice: newTotalPrice });
 		} else {
@@ -111,7 +111,7 @@ class App extends Component {
 
 		// update total price
 		const oldTotalPrice = this.state.totalPrice;
-		const newTotalPrice = oldTotalPrice + itemObj.price * itemObj.quantity;
+		const newTotalPrice = oldTotalPrice + itemObj.price;
 
 		this.setState({ selectedItems: itemArray, totalPrice: newTotalPrice });
 

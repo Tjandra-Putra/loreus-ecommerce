@@ -2,6 +2,7 @@
 	background-color: unset !important;
 	margin: unset !important;
 	padding-left: unset !important;
+	padding-top: unset;
 }
 
 #btn-add {
@@ -28,4 +29,13 @@
 /* Style to change separator  */
 .breadcrumb-item + .breadcrumb-item::before {
 	content: ">";
+}
+
+.toast-header {
+	padding-left: unset;
+}
+
+.toast-title {
+	font-weight: 400;
+	color: black;
 }
