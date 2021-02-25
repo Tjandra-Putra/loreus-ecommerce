@@ -3,6 +3,13 @@ import { Container, Row, Col, Alert, Button, Table, DropdownButton, Dropdown } f
 import './Cart.css';
 
 const cart = (props) => {
+	// Caculate total amount in cart
+	let totalAmount = 0;
+
+	props.selectedItems.map((item) => {
+		totalAmount += item.price * item.quantity;
+	});
+
 	let loadedProducts = props.selectedItems.map((item, index) => (
 		<tr key={item.id} className="border-bottom">
 			<td>
@@ -62,7 +69,7 @@ const cart = (props) => {
 					<h5>Summary</h5>
 					<div className="d-flex justify-content-between mt-3">
 						<div className="pr-2 bd-highlight">Subtotal</div>
-						<div className="pr-2 bd-highlight">S${props.totalPrice.toFixed(2)}</div>
+						<div className="pr-2 bd-highlight">S${totalAmount.toFixed(2)}</div>
 					</div>
 					<div className="d-flex justify-content-between mt-3">
 						<div className="pr-2 bd-highlight">Estimated Delivery & Handling</div>
@@ -71,7 +78,7 @@ const cart = (props) => {
 					<hr />
 					<div className="d-flex justify-content-between mt-3">
 						<div className="pr-2 bd-highlight">Total</div>
-						<div className="pr-2 bd-highlight font-weight-bold">S${props.totalPrice.toFixed(2)}</div>
+						<div className="pr-2 bd-highlight font-weight-bold">S${totalAmount.toFixed(2)}</div>
 					</div>
 					<hr />
 
