@@ -15,7 +15,7 @@ class App extends Component {
 			id: '1',
 			name: 'product_1',
 			desc:
-				"product_1 The radiance lives on in the Nike Air Force 1 '07 SE, the b-ball icon that puts a Valentine's Day spin on what you know best: crisp leather, bold colours and the perfect amount of flash to make you shine. The embossed words  form the Swoosh designs, while little lockets of creativity throughout reveal your love for style and detail.",
+				'product_1 desc Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the lea ',
 			price: 26.45,
 			imgUrl:
 				'https://images.pexels.com/photos/2613260/pexels-photo-2613260.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
@@ -24,8 +24,7 @@ class App extends Component {
 		{
 			id: '2',
 			name: 'product_2',
-			desc:
-				'product_2 The Nike Air Force 1 Shadow SE puts a playful twist on a classic b-ball design. Using a layered approach, doubling the branding and exaggerating the midsole, it highlights AF-1 DNA with a bold look. The pixelated Swoosh designs add fresh expressions to the branding, while the holographic details level up your look.',
+			desc: 'product_2 desc',
 			price: 78.25,
 			imgUrl:
 				'https://images.pexels.com/photos/2613260/pexels-photo-2613260.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
@@ -34,8 +33,7 @@ class App extends Component {
 		{
 			id: '3',
 			name: 'product_3',
-			desc:
-				'product_3 The Nike Air Force 1 Shadow SE puts a playful twist on a classic b-ball design. Using a layered approach, doubling the branding and exaggerating the midsole, it highlights AF-1 DNA with a bold look. The pixelated Swoosh designs add fresh expressions to the branding, while the holographic details level up your look.',
+			desc: 'product_3 desc',
 			price: 123.11,
 			imgUrl:
 				'https://images.pexels.com/photos/2613260/pexels-photo-2613260.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
@@ -44,8 +42,7 @@ class App extends Component {
 		{
 			id: '4',
 			name: 'product_4',
-			desc:
-				'product_4 The Nike Air Force 1 Shadow SE puts a playful twist on a classic b-ball design. Using a layered approach, doubling the branding and exaggerating the midsole, it highlights AF-1 DNA with a bold look. The pixelated Swoosh designs add fresh expressions to the branding, while the holographic details level up your look.',
+			desc: 'product_4 desc',
 			price: 63,
 			imgUrl:
 				'https://images.pexels.com/photos/2613260/pexels-photo-2613260.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
@@ -75,14 +72,22 @@ class App extends Component {
 			const itemArray = [ ...this.state.selectedItems ];
 			itemArray[itemIndex] = productObject;
 
-			this.setState({ selectedItems: itemArray });
+			// update total price
+			const oldTotalPrice = this.state.totalPrice;
+			const newTotalPrice = oldTotalPrice + productObject.price;
+
+			this.setState({ selectedItems: itemArray, totalPrice: newTotalPrice });
 		} else {
 			// Adding new items to shopping cart
 			productObject.quantity = 1;
 			let array = [ ...this.state.selectedItems ];
 			array.push(productObject);
 
-			this.setState({ selectedItems: array });
+			// update total price
+			const oldTotalPrice = this.state.totalPrice;
+			const newTotalPrice = oldTotalPrice + productObject.price;
+
+			this.setState({ selectedItems: array, totalPrice: newTotalPrice });
 
 			console.log(this.state.selectedItems);
 			console.log(this.state.selectedItems.length);
@@ -104,9 +109,15 @@ class App extends Component {
 		const itemArray = [ ...this.state.selectedItems ];
 		itemArray[itemIndex] = itemObj;
 
-		this.setState({ selectedItems: itemArray });
+		// update total price
+		const oldTotalPrice = this.state.totalPrice;
+		const newTotalPrice = oldTotalPrice + itemObj.price;
+
+		this.setState({ selectedItems: itemArray, totalPrice: newTotalPrice });
 
 		console.log(event, this.state.selectedItems);
+
+		console.log('price : $ ' + itemObj.quantity * itemObj.price);
 	};
 
 	removeCartItemHandler = (itemIndex) => {

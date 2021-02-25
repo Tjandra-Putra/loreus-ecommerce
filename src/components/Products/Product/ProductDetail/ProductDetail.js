@@ -36,7 +36,7 @@ const productDetail = (props) => {
 						<Toast.Header>
 							<img src="holder.js/20x20?text=%20" className="rounded mr-2" alt="" />
 							<div className="mr-auto toast-title">
-								<i className="fas fa-check-circle text-success" /> Added to Bag
+								<i class="fas fa-check-circle text-success" /> Added to Bag
 							</div>
 							{/* <small>11 mins ago</small> */}
 						</Toast.Header>
