@@ -7,6 +7,7 @@ import './Cart.css';
 const cart = (props) => {
 	const [ isSubmitted, setSubmit ] = useState();
 
+	let buttonEnable = true;
 	let redirect = null;
 
 	const submitHandler = () => {
@@ -16,6 +17,7 @@ const cart = (props) => {
 			setSubmit(true);
 		}
 	};
+
 	// If submit value is true, it will redirect
 	if (isSubmitted) {
 		redirect = <Redirect to="/checkout" />;
@@ -23,10 +25,14 @@ const cart = (props) => {
 
 	// Caculate total amount in cart
 	let totalAmount = 0;
-
 	props.selectedItems.map((item) => {
 		totalAmount += item.price * item.quantity;
 	});
+
+	// Button disable property for checkout
+	if (props.selectedItems.length !== 0) {
+		buttonEnable = false;
+	}
 
 	let loadedProducts = props.selectedItems.map((item, index) => (
 		<tr key={item.id} className="border-bottom">
@@ -101,7 +107,14 @@ const cart = (props) => {
 					</div>
 					<hr />
 
-					<Button variant="dark" id="btn-checkout" size="lg" block onClick={submitHandler}>
+					<Button
+						variant="dark"
+						id="btn-checkout"
+						size="lg"
+						block
+						onClick={submitHandler}
+						disabled={buttonEnable}
+					>
 						Checkout
 					</Button>
 				</Col>
