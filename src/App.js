@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
@@ -8,6 +8,7 @@ import Home from './components/Home/Home';
 import Products from './components/Products/Products';
 import Cart from './components/Cart/Cart';
 import ProductDetail from './components/Products/Product/ProductDetail/ProductDetail';
+import Checkout from './components/Checkout/Checkout';
 
 class App extends Component {
 	all_products = [
@@ -121,20 +122,25 @@ class App extends Component {
 				<div className="App">
 					<Navbar quantity={this.state.selectedItems.length} />
 					<Route exact path="/" component={Home} />
-					<Route exact path="/products">
-						<Products products={this.all_products} />
-					</Route>
-					<Route Route exact path="/cart">
-						<Cart
-							selectedItems={this.state.selectedItems}
-							totalPrice={this.state.totalPrice}
-							editQuantityHandler={this.editQuantityHandler}
-							removeCartItemHandler={this.removeCartItemHandler}
-						/>
-					</Route>
-					<Route exact path="/products/:prodId">
-						<ProductDetail products={this.all_products} addToCart={this.addToCartHandler} />
-					</Route>
+					<Switch>
+						<Route exact path="/products">
+							<Products products={this.all_products} />
+						</Route>
+						<Route Route exact path="/cart">
+							<Cart
+								selectedItems={this.state.selectedItems}
+								totalPrice={this.state.totalPrice}
+								editQuantityHandler={this.editQuantityHandler}
+								removeCartItemHandler={this.removeCartItemHandler}
+							/>
+						</Route>
+						<Route exact path="/checkout">
+							<Checkout />
+						</Route>
+						<Route exact path="/products/:prodId">
+							<ProductDetail products={this.all_products} addToCart={this.addToCartHandler} />
+						</Route>
+					</Switch>
 					<Footer />
 				</div>
 			</Router>

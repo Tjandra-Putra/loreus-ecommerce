@@ -1,8 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Alert, Button, Table, DropdownButton, Dropdown } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
+
 import './Cart.css';
 
 const cart = (props) => {
+	const [ isSubmitted, setSubmit ] = useState();
+
+	let redirect = null;
+
+	const submitHandler = () => {
+		if (props.selectedItems.length === 0) {
+			alert('Cart must not be empty');
+		} else {
+			setSubmit(true);
+		}
+	};
+	// If submit value is true, it will redirect
+	if (isSubmitted) {
+		redirect = <Redirect to="/checkout" />;
+	}
+
 	// Caculate total amount in cart
 	let totalAmount = 0;
 
@@ -54,6 +72,7 @@ const cart = (props) => {
 
 	return (
 		<Container>
+			{redirect}
 			<Alert variant="dark" dismissible style={{ backgroundColor: 'rgb(247, 247, 247)', border: 'none' }}>
 				HAVE A PROMO CODE? You will be able to apply it on the payment page during checkout.
 			</Alert>
@@ -82,7 +101,7 @@ const cart = (props) => {
 					</div>
 					<hr />
 
-					<Button variant="dark" id="btn-checkout" size="lg" block>
+					<Button variant="dark" id="btn-checkout" size="lg" block onClick={submitHandler}>
 						Checkout
 					</Button>
 				</Col>
