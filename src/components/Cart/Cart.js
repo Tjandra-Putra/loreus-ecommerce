@@ -45,7 +45,7 @@ const cart = (props) => {
 					<div className="bd-highlight">
 						<DropdownButton
 							id="dropdown-basic-button"
-							title="Quantity"
+							title={'Quantity ' + item.quantity}
 							onSelect={(event) => props.editQuantityHandler(event, item.id)}
 						>
 							<Dropdown.Item eventKey="1">1</Dropdown.Item>
@@ -60,7 +60,7 @@ const cart = (props) => {
 							<Dropdown.Item eventKey="10">10</Dropdown.Item>
 						</DropdownButton>
 					</div>
-					<div className="pl-2 bd-highlight">{item.quantity}</div>
+					{/* <div className="pl-2 bd-highlight">{item.quantity}</div> */}
 				</div>
 			</td>
 			<td>S${item.price}</td>
@@ -98,7 +98,7 @@ const cart = (props) => {
 					</div>
 					<div className="d-flex justify-content-between mt-3">
 						<div className="pr-2 bd-highlight">Estimated Delivery & Handling</div>
-						<div className="pr-2 bd-highlight">S$0.00</div>
+						<div className="pr-2 bd-highlight" style={{color:'rgb(250, 84, 0)', fontWeight:'500'}}>Free</div>
 					</div>
 					<hr />
 					<div className="d-flex justify-content-between mt-3">

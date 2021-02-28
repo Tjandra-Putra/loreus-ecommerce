@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
@@ -9,6 +9,7 @@ import Products from './components/Products/Products';
 import Cart from './components/Cart/Cart';
 import ProductDetail from './components/Products/Product/ProductDetail/ProductDetail';
 import Checkout from './components/Checkout/Checkout';
+import Support from './components/Support/Support';
 
 class App extends Component {
 	all_products = [
@@ -118,7 +119,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<Router>
+			<BrowserRouter>
 				<div className="App">
 					<Navbar quantity={this.state.selectedItems.length} />
 					<Route exact path="/" component={Home} />
@@ -137,13 +138,16 @@ class App extends Component {
 						<Route exact path="/checkout">
 							<Checkout />
 						</Route>
+						<Route exact path="/support">
+							<Support />
+						</Route>
 						<Route exact path="/products/:prodId">
 							<ProductDetail products={this.all_products} addToCart={this.addToCartHandler} />
 						</Route>
 					</Switch>
 					<Footer />
 				</div>
-			</Router>
+			</BrowserRouter>
 		);
 	}
 }

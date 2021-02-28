@@ -29,9 +29,11 @@ const navbar = (props) => {
 						<Nav.Link className="mx-2 nav-link" to="/blog">
 							BLOG
 						</Nav.Link>
-						<Nav.Link className="mx-2 nav-link" to="/pages">
-							PAGES
-						</Nav.Link>
+						<LinkContainer to="/support">
+							<Nav.Link className="mx-2 nav-link" to="/contact">
+								SUPPORT
+							</Nav.Link>
+						</LinkContainer>
 					</ul>
 					<ul className="navbar-nav ml-auto nav-icons">
 						<Nav.Link to="/favourite">
@@ -40,9 +42,7 @@ const navbar = (props) => {
 						<LinkContainer to="/cart">
 							<Nav.Link>
 								<img src={bagImg} className="img-fluid" alt="introImage" width="25" />
-								<div className="quantity">
-									{props.quantity}
-								</div>
+								<div className="quantity">{props.quantity}</div>
 							</Nav.Link>
 						</LinkContainer>
 						<Nav.Link to="/login">
