@@ -1,15 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
-import Products from './components/Products/Products';
-import Cart from './components/Cart/Cart';
-import ProductDetail from './components/Products/Product/ProductDetail/ProductDetail';
-import Checkout from './components/Checkout/Checkout';
-import Support from './components/Support/Support';
+
+// Lazy Loading - Suspense, Fallback, render. This is to enhance performance.
+const Support = React.lazy(() => import('./components/Support/Support'));
+const Cart = React.lazy(() => import('./components/Cart/Cart'));
+const Products = React.lazy(() => import('./components/Products/Products'));
+const Checkout = React.lazy(() => import('./components/Checkout/Checkout'));
+const ProductDetail = React.lazy(() => import('./components/Products/Product/ProductDetail/ProductDetail'));
 
 class App extends Component {
 	all_products = [
@@ -56,7 +59,7 @@ class App extends Component {
 	];
 
 	state = {
-		selectedItems: [], // receives an object
+		selectedItems: [], // contains a list of objects
 		totalPrice: 0
 	};
 
@@ -94,7 +97,7 @@ class App extends Component {
 	};
 
 	editQuantityHandler = (event, itemId) => {
-		// index value
+		// index value of item
 		const itemIndex = this.state.selectedItems.findIndex((item) => {
 			return item.id === itemId;
 		});
@@ -120,33 +123,79 @@ class App extends Component {
 	render() {
 		return (
 			<BrowserRouter>
-				<div className="App">
+				<React.Fragment className="App">
 					<Navbar quantity={this.state.selectedItems.length} />
+
+					{/* Default Path */}
 					<Route exact path="/" component={Home} />
+
 					<Switch>
-						<Route exact path="/products">
-							<Products products={this.all_products} />
-						</Route>
-						<Route Route exact path="/cart">
-							<Cart
-								selectedItems={this.state.selectedItems}
-								totalPrice={this.state.totalPrice}
-								editQuantityHandler={this.editQuantityHandler}
-								removeCartItemHandler={this.removeCartItemHandler}
-							/>
-						</Route>
-						<Route exact path="/checkout">
-							<Checkout />
-						</Route>
-						<Route exact path="/support">
-							<Support />
-						</Route>
-						<Route exact path="/products/:prodId">
-							<ProductDetail products={this.all_products} addToCart={this.addToCartHandler} />
-						</Route>
+						<Route
+							exact
+							path="/products"
+							render={() => (
+								<Suspense fallback={<div>Loading...</div>}>
+									<Products products={this.all_products} />
+								</Suspense>
+							)}
+						/>
+
+						<Route
+							exact
+							path="/cart"
+							render={() => (
+								<Suspense fallback={<div>Loading...</div>}>
+									<Cart
+										selectedItems={this.state.selectedItems}
+										totalPrice={this.state.totalPrice}
+										editQuantityHandler={this.editQuantityHandler}
+										removeCartItemHandler={this.removeCartItemHandler}
+									/>
+								</Suspense>
+							)}
+						/>
+
+						<Route
+							exact
+							path="/checkout"
+							render={() => (
+								<Suspense fallback={<div>Loading...</div>}>
+									<Checkout />
+								</Suspense>
+							)}
+						/>
+
+						<Route
+							exact
+							path="/support"
+							render={() => (
+								<Suspense fallback={<div>Loading...</div>}>
+									<Support />
+								</Suspense>
+							)}
+						/>
+
+						<Route
+							exact
+							path="/products/:prodId"
+							render={() => (
+								<Suspense fallback={<div>Loading...</div>}>
+									<ProductDetail products={this.all_products} addToCart={this.addToCartHandler} />
+								</Suspense>
+							)}
+						/>
+
+						<Route
+							render={() => (
+								<Container>
+									<h1>Page Not Found</h1>
+								</Container>
+							)}
+						/>
 					</Switch>
+
 					<Footer />
-				</div>
+				</React.Fragment>
 			</BrowserRouter>
 		);
 	}
