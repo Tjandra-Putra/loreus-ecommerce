@@ -15,7 +15,7 @@ const productDetail = (props) => {
 
 	const toastMsg = () => {
 		return (
-			<div>
+			<React.Fragment>
 				<div
 					style={{
 						position: 'relative',
@@ -49,7 +49,7 @@ const productDetail = (props) => {
 						</Toast.Body>
 					</Toast>
 				</div>
-			</div>
+			</React.Fragment>
 		);
 	};
 

@@ -1,61 +1,139 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
 import './Support.css';
 import phoneGif from '../../assets/Image/phone_calling.gif';
 
-const support = () => {
-	return (
-		<div>
-			<Container fluid className="banner text-center text-white">
-				<h1>Get In Touch</h1>
-				<p>What can we help you with? We are happy to assist you as much as possible.</p>
-			</Container>
-			<Container>
-				<Row>
-					<Col md={6} sm={12}>
-						<div className="box">
-							<Form>
-								<Form.Group controlId="formBasicEmail">
-									<Form.Label>Email address</Form.Label>
-									<Form.Control type="email" placeholder="Enter email" />
-									<Form.Text className="text-muted">
-										We'll never share your email with anyone else.
-									</Form.Text>
-								</Form.Group>
-								<Form.Group controlId="exampleForm.ControlSelect1">
-									<Form.Label>Category</Form.Label>
-									<Form.Control as="select">
-										<option>-- Please Select --</option>
-										<option>Product</option>
-										<option>Business</option>
-										<option>General</option>
-										<option>Account</option>
-									</Form.Control>
-								</Form.Group>
-								<Form.Group controlId="exampleForm.ControlTextarea1">
-									<Form.Label>Message</Form.Label>
-									<Form.Control as="textarea" rows={3} />
-								</Form.Group>
+class Support extends Component {
+	state = {
+		isNotSubmitted: true,
+		formData: {
+			email: '',
+			category: '',
+			message: ''
+		}
+	};
 
-								<Button variant="success" className="float-right">
-									Send Message
-								</Button>
-							</Form>
-						</div>
-					</Col>
-					<Col md={6} sm={12}>
-						<div className="box text-center">
-							<h5>Other Ways to Connect</h5>
-							<p class="pb-0 mb-0">
-								Call, email, send us a postcard — whatever works for you. We'll be here.
-							</p>
-							<img src={phoneGif} className="img-fluid" alt="introImage" width="350" />
-						</div>
-					</Col>
-				</Row>
-			</Container>
-		</div>
-	);
-};
+	submitButton = () => {
+		if (
+			this.state.formData.email.length > 0 &&
+			this.state.formData.message.length > 0 &&
+			this.state.formData.category.length > 0
+		) {
+			return (
+				<Button variant="success" className="float-right" onClick={this.submitForm} type="submit">
+					Send Message
+				</Button>
+			);
+		} else {
+			return (
+				<Button variant="success" className="float-right" onClick={this.submitForm} type="submit" disabled>
+					Send Message
+				</Button>
+			);
+		}
+	};
 
-export default support;
+	handleSubmitForm = (event) => {
+		event.preventDefault(); // prevents reload when button is set to type = submit
+		console.log(this.state.formData.email, this.state.formData.message, this.state.formData.category);
+	};
+
+	handleEmailChange = (event) => {
+		this.setState((prevState) => ({
+			formData: {
+				// object that we want to update
+				...prevState.formData, // keep all other key-value pairs
+				email: event.target.value // update the value of specific key
+			}
+		}));
+	};
+
+	handleMessageChange = (event) => {
+		this.setState((prevState) => ({
+			formData: {
+				// object that we want to update
+				...prevState.formData, // keep all other key-value pairs
+				message: event.target.value // update the value of specific key
+			}
+		}));
+	};
+
+	handlerCategoryChange = (event) => {
+		this.setState((prevState) => ({
+			formData: {
+				// object that we want to update
+				...prevState.formData, // keep all other key-value pairs
+				category: event.target.value // update the value of specific key
+			}
+		}));
+	};
+
+	render() {
+		return (
+			<React.Fragment>
+				<Container fluid className="banner text-center text-white">
+					<h1>Get In Touch</h1>
+					<p>What can we help you with? We are happy to assist you as much as possible.</p>
+				</Container>
+				<Container>
+					<Row>
+						<Col md={6} sm={12}>
+							<div className="box">
+								<Form onSubmit={this.handleSubmitForm}>
+									<Form.Group controlId="formBasicEmail">
+										<Form.Label>Email address</Form.Label>
+										<Form.Control
+											type="email"
+											placeholder="Enter email"
+											value={this.state.formData.email}
+											onChange={this.handleEmailChange}
+										/>
+										<Form.Text className="text-muted">
+											We'll never share your email with anyone else.
+										</Form.Text>
+									</Form.Group>
+									<Form.Group controlId="exampleForm.ControlSelect1">
+										<Form.Label>Category</Form.Label>
+										<Form.Control
+											as="select"
+											value={this.state.formData.category}
+											onChange={this.handlerCategoryChange}
+										>
+											<option>-- Select a category --</option>
+											<option>General</option>
+											<option>Product</option>
+											<option>Business</option>
+											<option>Account</option>
+										</Form.Control>
+									</Form.Group>
+									<Form.Group controlId="exampleForm.ControlTextarea1">
+										<Form.Label>Message</Form.Label>
+										<Form.Control
+											as="textarea"
+											rows={3}
+											value={this.state.formData.message}
+											onChange={this.handleMessageChange}
+										/>
+									</Form.Group>
+
+									{this.submitButton()}
+								</Form>
+							</div>
+						</Col>
+						<Col md={6} sm={12}>
+							<div className="box text-center">
+								<h5>Other Ways to Connect</h5>
+								<p className="pb-0 mb-0">
+									Call, email, send us a postcard — whatever works for you. We'll be here.
+								</p>
+								<img src={phoneGif} className="img-fluid" alt="introImage" width="350" />
+							</div>
+						</Col>
+					</Row>
+				</Container>
+			</React.Fragment>
+		);
+	}
+}
+
+export default Support;

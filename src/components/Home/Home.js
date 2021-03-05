@@ -14,7 +14,6 @@ import trending_2 from '../../assets/Image/trending_2.jpg';
 
 const home = () => (
 	<Container>
-		<div>
 			<div className="hero">
 				<Row>
 					<Col className="p-0" xs={12} md={6}>
@@ -163,7 +162,6 @@ const home = () => (
 					</Col>
 				</Row>
 			</div>
-		</div>
 	</Container>
 );
 

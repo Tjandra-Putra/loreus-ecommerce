@@ -123,13 +123,13 @@ class App extends Component {
 	render() {
 		return (
 			<BrowserRouter>
-				<React.Fragment className="App">
+				<React.Fragment>
 					<Navbar quantity={this.state.selectedItems.length} />
 
-					{/* Default Path */}
-					<Route exact path="/" component={Home} />
-
 					<Switch>
+						{/* Default Path */}
+						<Route exact path="/" component={Home} />
+						
 						<Route
 							exact
 							path="/products"
