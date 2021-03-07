@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import "./Support.css";
 import phoneGif from "../../assets/Image/phone_calling.gif";
 
-class Support extends Component {
+class SupportRedux extends Component {
   state = {
     isNotSubmitted: true,
     formData: {
@@ -25,7 +25,7 @@ class Support extends Component {
         <Button
           variant="success"
           className="float-right"
-          onClick={this.submitForm}
+          onClick={() => this.props.submitReduxForm(this.state.formData)}
           type="submit"
         >
           Send Message
@@ -36,7 +36,7 @@ class Support extends Component {
         <Button
           variant="success"
           className="float-right"
-          onClick={this.submitForm}
+          onClick={() => this.props.submitReduxForm(this.state.formData)}
           type="submit"
           disabled
         >
@@ -63,6 +63,8 @@ class Support extends Component {
         email: event.target.value, // update the value of specific key
       },
     }));
+
+    console.log(event.target.value);
   };
 
   handleMessageChange = (event) => {
@@ -151,22 +153,6 @@ class Support extends Component {
                   alt="introImage"
                   width="350"
                 />
-
-                {/* <p>Redux State: {this.props.ctr}</p>
-								<Button
-									variant="success"
-									className="mx-auto d-inline"
-									onClick={this.props.onIncrementCounter}
-								>
-									Increment Redux
-								</Button>
-								<Button
-									variant="primary"
-									className="mx-auto d-inline"
-									onClick={this.props.onAddCounter}
-								>
-									Add Redux
-								</Button> */}
               </div>
             </Col>
           </Row>
@@ -176,20 +162,28 @@ class Support extends Component {
   }
 }
 
+// ==================================== REDUX SECTION ====================================
+
 // STORE - Getting all the state from reducer.js
-const mapStateToProps = (state) => {
+const mapStateToProps = (global_state) => {
   return {
-    ctr: state.counter,
+    data: global_state.supportFormData,
   };
 };
 
 // ACTION - returning value to the reducer.js for processing and computation
 const mapDispatchToProps = (dispatch) => {
   return {
-    onIncrementCounter: () => dispatch({ type: "INCREMENT" }),
-    onAddCounter: () =>
-      dispatch({ type: "ADD", val: 10, name: "button add counter" }), // use payload for javascript object instead of value
+    submitReduxForm: (local_state) =>
+      dispatch({
+        type: "SUPPORT_FORM_SUBMIT",
+        payload: {
+          message: local_state.message,
+          category: local_state.category,
+          email: local_state.email,
+        },
+      }),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Support);
+export default connect(mapStateToProps, mapDispatchToProps)(SupportRedux);

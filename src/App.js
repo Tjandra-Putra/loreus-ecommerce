@@ -9,9 +9,7 @@ import Home from "./components/Home/Home";
 import Message from "./components/Message/Message";
 
 // Lazy Loading - Suspense, Fallback, render. This is to enhance performance.
-const SupportRedux = React.lazy(() =>
-  import("./components/SupportRedux/SupportRedux")
-);
+const Support = React.lazy(() => import("./components/Support/Support"));
 const Cart = React.lazy(() => import("./components/Cart/Cart"));
 const Products = React.lazy(() => import("./components/Products/Products"));
 const Checkout = React.lazy(() => import("./components/Checkout/Checkout"));
@@ -177,7 +175,7 @@ class App extends Component {
               path="/support"
               render={() => (
                 <Suspense fallback={<div>Loading...</div>}>
-                  <SupportRedux />
+                  <Support />
                 </Suspense>
               )}
             />
