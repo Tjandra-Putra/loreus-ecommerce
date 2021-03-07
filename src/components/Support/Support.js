@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
+import { connect } from 'react-redux';
+
 import './Support.css';
 import phoneGif from '../../assets/Image/phone_calling.gif';
 
@@ -51,9 +53,8 @@ class Support extends Component {
 	handleMessageChange = (event) => {
 		this.setState((prevState) => ({
 			formData: {
-				// object that we want to update
-				...prevState.formData, // keep all other key-value pairs
-				message: event.target.value // update the value of specific key
+				...prevState.formData,
+				message: event.target.value
 			}
 		}));
 	};
@@ -61,9 +62,8 @@ class Support extends Component {
 	handlerCategoryChange = (event) => {
 		this.setState((prevState) => ({
 			formData: {
-				// object that we want to update
-				...prevState.formData, // keep all other key-value pairs
-				category: event.target.value // update the value of specific key
+				...prevState.formData,
+				category: event.target.value
 			}
 		}));
 	};
@@ -127,6 +127,22 @@ class Support extends Component {
 									Call, email, send us a postcard — whatever works for you. We'll be here.
 								</p>
 								<img src={phoneGif} className="img-fluid" alt="introImage" width="350" />
+
+								<p>Redux State: {this.props.ctr}</p>
+								<Button
+									variant="success"
+									className="mx-auto d-inline"
+									onClick={this.props.onIncrementCounter}
+								>
+									Increment Redux
+								</Button>
+								<Button
+									variant="primary"
+									className="mx-auto d-inline"
+									onClick={this.props.onAddCounter}
+								>
+									Add Redux
+								</Button>
 							</div>
 						</Col>
 					</Row>
@@ -136,4 +152,19 @@ class Support extends Component {
 	}
 }
 
-export default Support;
+// STORE - Getting all the state from reducer.js
+const mapStateToProps = (state) => {
+	return {
+		ctr: state.counter
+	};
+};
+
+// ACTION - returning value to the reducer.js for processing and computation
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onIncrementCounter: () => dispatch({ type: 'INCREMENT' }),
+		onAddCounter: () => dispatch({ type: 'ADD', val: 10, name: 'button add counter' }) // use payload for javascript object instead of value
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Support);

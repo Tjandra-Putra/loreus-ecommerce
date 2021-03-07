@@ -1,11 +1,12 @@
 import React, { Component, Suspense } from 'react';
-import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 
+import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
+
 
 // Lazy Loading - Suspense, Fallback, render. This is to enhance performance.
 const Support = React.lazy(() => import('./components/Support/Support'));
