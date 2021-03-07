@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import "./Support.css";
 import phoneGif from "../../assets/Image/phone_calling.gif";
 
-class SupportRedux extends Component {
+class Support extends Component {
   state = {
     isNotSubmitted: true,
     formData: {
@@ -119,7 +119,7 @@ class SupportRedux extends Component {
                       value={this.state.formData.category}
                       onChange={this.handlerCategoryChange}
                     >
-                      <option>-- Select a category --</option>
+                      <option label="-- Select a category --"></option>
                       <option>General</option>
                       <option>Product</option>
                       <option>Business</option>
@@ -186,4 +186,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SupportRedux);
+export default connect(mapStateToProps, mapDispatchToProps)(Support);

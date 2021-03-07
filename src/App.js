@@ -61,75 +61,13 @@ class App extends Component {
     },
   ];
 
-  state = {
-    selectedItems: [], // contains a list of objects
-    totalPrice: 0,
-  };
-
-  addToCartHandler = (productObject) => {
-    // Default value of quantity is 1 when cart is empty
-    if (this.state.selectedItems.length === 0) {
-      productObject.quantity = 1;
-    }
-
-    // if item has already been added to shopping cart, only updates the quantity
-    if (this.state.selectedItems.some((item) => item.id === productObject.id)) {
-      const itemIndex = this.state.selectedItems.findIndex((item) => {
-        return item.id === productObject.id;
-      });
-
-      productObject.quantity += 1;
-
-      const itemArray = [...this.state.selectedItems];
-      itemArray[itemIndex] = productObject;
-
-      this.setState({ selectedItems: itemArray });
-    } else {
-      // Adding new items to shopping cart
-      productObject.quantity = 1;
-      let array = [...this.state.selectedItems];
-      array.push(productObject);
-
-      this.setState({ selectedItems: array });
-
-      console.log(this.state.selectedItems);
-      console.log(this.state.selectedItems.length);
-    }
-
-    console.log(this.state.selectedItems);
-  };
-
-  editQuantityHandler = (event, itemId) => {
-    // index value of item
-    const itemIndex = this.state.selectedItems.findIndex((item) => {
-      return item.id === itemId;
-    });
-
-    const itemObj = { ...this.state.selectedItems[itemIndex] };
-
-    itemObj.quantity = event;
-
-    const itemArray = [...this.state.selectedItems];
-    itemArray[itemIndex] = itemObj;
-
-    this.setState({ selectedItems: itemArray });
-
-    console.log(event, this.state.selectedItems);
-  };
-
-  removeCartItemHandler = (itemIndex) => {
-    const allItems = [...this.state.selectedItems];
-    allItems.splice(itemIndex, 1);
-    this.setState({ selectedItems: allItems });
-  };
-
   render() {
     return (
       <BrowserRouter>
         <React.Fragment>
           <Message />
 
-          <Navbar quantity={this.state.selectedItems.length} />
+          <Navbar />
 
           <Switch>
             {/* Default Path */}
@@ -150,12 +88,7 @@ class App extends Component {
               path="/cart"
               render={() => (
                 <Suspense fallback={<div>Loading...</div>}>
-                  <Cart
-                    selectedItems={this.state.selectedItems}
-                    totalPrice={this.state.totalPrice}
-                    editQuantityHandler={this.editQuantityHandler}
-                    removeCartItemHandler={this.removeCartItemHandler}
-                  />
+                  <Cart />
                 </Suspense>
               )}
             />
@@ -185,10 +118,7 @@ class App extends Component {
               path="/products/:prodId"
               render={() => (
                 <Suspense fallback={<div>Loading...</div>}>
-                  <ProductDetail
-                    products={this.all_products}
-                    addToCart={this.addToCartHandler}
-                  />
+                  <ProductDetail products={this.all_products} />
                 </Suspense>
               )}
             />
