@@ -1,36 +1,40 @@
 const initialState = {
-	counter: 0
+  supportFormData: {
+    message: "",
+    email: "",
+    category: "",
+  },
 };
 
 const reducer = (state = initialState, action) => {
-	switch (action.type) {
-		case 'INCREMENT':
-			return {
-				...state,
-				counter: state.counter + 1
-			};
-		case 'ADD':
-			return {
-				...state,
-				counter: state.counter + action.val
-			};
-	}
+  switch (action.type) {
+    case "SUPPORT_FORM_SUBMIT":
+      return {
+        ...state,
+        supportFormData: {
+          ...state.supportFormData,
+          message: action.payload.message,
+          email: action.payload.email,
+          category: action.payload.category,
+        },
+      };
+  }
 
-	// if (action.type === 'INCREMENT') {
-	// 	return {
-	// 		...state,
-	// 		counter: state.counter + 1
-	// 	};
-	// }
+  // if (action.type === 'INCREMENT') {
+  // 	return {
+  // 		...state,
+  // 		counter: state.counter + 1
+  // 	};
+  // }
 
-	// if (action.type === 'ADD') {
-	// 	return {
-	// 		...state,
-	// 		counter: state.counter + action.val
-	// 	};
-	// }
+  // if (action.type === 'ADD') {
+  // 	return {
+  // 		...state,
+  // 		counter: state.counter + action.val
+  // 	};
+  // }
 
-	return state;
+  return state;
 };
 
 export default reducer;

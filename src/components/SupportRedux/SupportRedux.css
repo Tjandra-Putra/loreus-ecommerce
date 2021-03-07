@@ -1,0 +1,22 @@
+.banner {
+  background-image: repeating-linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.04) 0px,
+      rgba(0, 0, 0, 0.04) 2px,
+      transparent 2px,
+      transparent 4px
+    ),
+    linear-gradient(135deg, rgb(165, 230, 235), rgb(29, 32, 232));
+
+  height: 35vh;
+  padding-top: 11vh;
+}
+
+.box {
+  height: 27em;
+  transform: translateY(-8vh);
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 5px;
+  padding: 2rem;
+}

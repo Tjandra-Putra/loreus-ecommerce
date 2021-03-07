@@ -11,6 +11,11 @@ import reducer from './store/reducer';
 // Takes reducer as an input
 const store = createStore(reducer);
 
+// Subscription
+store.subscribe(() => {
+	console.log('[Subscription]', store.getState());
+});
+
 ReactDOM.render(
 	// Wrapping App with Provider from react-redux to connect. Injecting Store into react component
 	<Provider store={store}>
