@@ -62,7 +62,7 @@ const cart = (props) => {
               id="dropdown-basic-button"
               title={"Quantity " + item.quantity}
               onSelect={(event) =>
-                props.editCartQuantityHandlerRedux(event, item.id)
+                props.editCartQuantityHandler(event, item.id)
               }
             >
               <Dropdown.Item eventKey="1">1</Dropdown.Item>
@@ -84,7 +84,7 @@ const cart = (props) => {
       <td>
         <div
           className="btn-remove"
-          onClick={() => props.removeCartItemHandlerRedux(index)}
+          onClick={() => props.removeCartItemHandler(index)}
         >
           Remove
         </div>
@@ -169,13 +169,13 @@ const mapStateToProps = (global_state) => {
 // ACTION - returning value to the reducer.js for processing and computation
 const mapDispatchToProps = (dispatch) => {
   return {
-    editCartQuantityHandlerRedux: (event, itemId) =>
+    editCartQuantityHandler: (event, itemId) =>
       dispatch({
         type: "EDIT_CART_QUANTITY",
         event: event,
         itemId: itemId,
       }),
-    removeCartItemHandlerRedux: (index) =>
+    removeCartItemHandler: (index) =>
       dispatch({ type: "REMOVE_CART_ITEM", index: index }),
   };
 };

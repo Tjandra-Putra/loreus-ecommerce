@@ -25,7 +25,7 @@ class Support extends Component {
         <Button
           variant="success"
           className="float-right"
-          onClick={() => this.props.submitReduxForm(this.state.formData)}
+          onClick={() => this.props.submitFormHandler(this.state.formData)}
           type="submit"
         >
           Send Message
@@ -36,7 +36,7 @@ class Support extends Component {
         <Button
           variant="success"
           className="float-right"
-          onClick={() => this.props.submitReduxForm(this.state.formData)}
+          onClick={() => this.props.submitFormHandler(this.state.formData)}
           type="submit"
           disabled
         >
@@ -174,7 +174,7 @@ const mapStateToProps = (global_state) => {
 // ACTION - returning value to the reducer.js for processing and computation
 const mapDispatchToProps = (dispatch) => {
   return {
-    submitReduxForm: (local_state) =>
+    submitFormHandler: (local_state) =>
       dispatch({
         type: "SUPPORT_FORM_SUBMIT",
         payload: {

@@ -66,8 +66,6 @@ const productDetail = (props) => {
     );
   };
 
-
-
   return (
     <Container>
       {product.map((item) => (
@@ -110,7 +108,7 @@ const productDetail = (props) => {
                     size="lg"
                     block
                     onClick={() => {
-                      props.addToCartRedux(item);
+                      props.addToCart(item);
                       setShow(true);
                     }}
                   >
@@ -153,7 +151,7 @@ const mapStateToProps = (global_state) => {
 // ACTION - returning value to the reducer.js for processing and computation
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToCartRedux: (item) =>
+    addToCart: (item) =>
       dispatch({
         type: "ADD_TO_CART",
         product: item,
