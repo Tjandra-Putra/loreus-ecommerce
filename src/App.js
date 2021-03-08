@@ -65,7 +65,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <React.Fragment>
-          <Message />
+          {/* <Message /> */}
 
           <Navbar />
 

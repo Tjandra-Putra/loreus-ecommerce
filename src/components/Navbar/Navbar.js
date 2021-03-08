@@ -14,13 +14,12 @@ const navbar = (props) => {
     <Navbar
       collapseOnSelect
       expand="lg"
-      bg="light"
       variant="light"
       className="Navbar py-4"
     >
       <Container>
         <LinkContainer to="/">
-          <Navbar.Brand className="font-weight-bold">
+          <Navbar.Brand className="brand">
             LOREUS<span className="text-danger">.</span>
           </Navbar.Brand>
         </LinkContainer>
@@ -28,17 +27,17 @@ const navbar = (props) => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <ul className="navbar-nav mr-auto">
             <LinkContainer to="/products">
-              <Nav.Link className="mx-2 nav-link">SHOP</Nav.Link>
+              <Nav.Link className="mx-2 nav-link">Shop</Nav.Link>
             </LinkContainer>
             <Nav.Link className="mx-2 nav-link" to="/collection">
-              COLLECTION
+              Collection
             </Nav.Link>
             <Nav.Link className="mx-2 nav-link" to="/blog">
-              BLOG
+              Blog
             </Nav.Link>
             <LinkContainer to="/support">
               <Nav.Link className="mx-2 nav-link" to="/contact">
-                SUPPORT
+                Support
               </Nav.Link>
             </LinkContainer>
           </ul>

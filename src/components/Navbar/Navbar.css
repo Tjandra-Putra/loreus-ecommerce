@@ -1,30 +1,35 @@
 .Navbar {
-	background-color: white !important;
+  background-color: white !important;
 }
 
 .nav-link {
-	/* color: black !important; */
-	font-weight: 500;
-	font-size: 1em !important;
+  /* color: black !important; */
+  font-weight: 500;
+  font-size: 1em !important;
 }
 
 .nav-link:hover {
-	font-weight: 600;
+  font-weight: 600;
 }
 
 .nav-link.active,
 .navlink:focus {
-	font-weight: 600 !important;
+  font-weight: 600 !important;
 }
 
 .quantity {
-	transform: translateY(-19px);
-	padding-left: 8px;
-	font-weight: 400 !important;
-	font-size: 14px;
-	color: black;
+  transform: translateY(-19px);
+  padding-left: 8px;
+  font-weight: 400 !important;
+  font-size: 14px;
+  color: black;
 }
 
 .nav-icons {
-	transform: translateY(10px);
+  transform: translateY(10px);
+}
+
+.brand {
+  font-size: 1.8em !important;
+  font-weight: 600;
 }

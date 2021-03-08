@@ -149,7 +149,7 @@ const cart = (props) => {
             onClick={submitHandler}
             disabled={buttonEnable}
           >
-            Checkout
+            CHECKOUT
           </Button>
         </Col>
       </Row>

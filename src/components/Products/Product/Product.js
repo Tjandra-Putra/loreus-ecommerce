@@ -5,7 +5,7 @@ import './Product.css';
 
 const product = (props) => {
 	return (
-		<Container>
+		<Container className="px-0">
 			<LinkContainer to={'/products/' + props.product.id}>
 				<Card className="my-4 card">
 					<Card.Img variant="top" src={props.product.imgUrl} />

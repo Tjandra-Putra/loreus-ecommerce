@@ -23,7 +23,7 @@ class Support extends Component {
     ) {
       return (
         <Button
-          variant="success"
+          variant="dark"
           className="float-right"
           onClick={() => this.props.submitFormHandler(this.state.formData)}
           type="submit"
@@ -34,7 +34,7 @@ class Support extends Component {
     } else {
       return (
         <Button
-          variant="success"
+          variant="dark"
           className="float-right"
           onClick={() => this.props.submitFormHandler(this.state.formData)}
           type="submit"
