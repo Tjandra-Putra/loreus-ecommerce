@@ -6,3 +6,8 @@
   font-weight: 400;
   color: black;
 }
+
+.toast-custom {
+  width: 14.5rem;
+  transform: translateY(5.9vh);
+}

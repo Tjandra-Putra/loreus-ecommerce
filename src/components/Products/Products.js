@@ -6,7 +6,7 @@ import { useState } from "react";
 import "./Products.css";
 
 const products = (props) => {
-  let [category, setCategory] = useState("Sort by Recommended");
+  let [category, setCategory] = useState("Recommended");
 
   // Toast
   const [show, setShow] = useState(false);
@@ -21,7 +21,7 @@ const products = (props) => {
           }}
         >
           <Toast
-            className="toast mx-auto"
+            className="toast-custom mx-auto"
             onClose={() => setShow(false)}
             show={show}
             delay={3000}
@@ -57,7 +57,7 @@ const products = (props) => {
   let loadedProducts;
   let propProduct = [...props.products];
 
-  if (category === "Sort by Recommended") {
+  if (category === "Recommended") {
     loadedProducts = (
       <Row>
         {propProduct.map((product) => (
@@ -134,7 +134,7 @@ const products = (props) => {
                 setShow(true);
               }}
             >
-              <option>Sort by Recommended</option>
+              <option>Recommended</option>
               <option>Price Low To High</option>
               <option>Price High To Low</option>
               <option>Just In</option>
@@ -142,7 +142,7 @@ const products = (props) => {
           </Form.Group>
         </Col>
       </Row>
-      <hr></hr>
+      <hr className="mt-4"></hr>
 
       {loadedProducts}
 
