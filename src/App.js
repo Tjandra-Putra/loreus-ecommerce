@@ -27,7 +27,7 @@ class App extends Component {
       price: 26.45,
       imgUrl:
         "https://images.pexels.com/photos/2613260/pexels-photo-2613260.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-      productMsgInfo: "Just In",
+      productMsgInfo: "Limited Stock",
     },
     {
       id: "2",

@@ -27,17 +27,17 @@ const navbar = (props) => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <ul className="navbar-nav mr-auto">
             <LinkContainer to="/products">
-              <Nav.Link className="mx-2 nav-link">Shop</Nav.Link>
+              <Nav.Link className="mx-2 nav-link">SHOP</Nav.Link>
             </LinkContainer>
             <Nav.Link className="mx-2 nav-link" to="/collection">
-              Collection
+              COLLECTION
             </Nav.Link>
             <Nav.Link className="mx-2 nav-link" to="/blog">
-              Blog
+              BLOG
             </Nav.Link>
             <LinkContainer to="/support">
               <Nav.Link className="mx-2 nav-link" to="/contact">
-                Support
+                SUPPORT
               </Nav.Link>
             </LinkContainer>
           </ul>

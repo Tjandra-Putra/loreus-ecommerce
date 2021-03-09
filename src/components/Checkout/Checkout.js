@@ -7,7 +7,7 @@ import "./Checkout.css";
 const checkOut = () => {
   return (
     <React.Fragment>
-      <Container fluid className="m-0 p-0">
+      <Container fluid className="mx-0 p-0">
         <div className="checkout-banner text-center text-white">
           <h1 style={{ fontWeight: "500", paddingTop: "5.2vh" }}>CHECKOUT</h1>
         </div>
@@ -210,7 +210,12 @@ const checkOut = () => {
                 </Col>
               </Row>
             </div>
-            <Button variant="dark" size="lg" className="float-right mt-5">
+            <Button
+              variant="dark"
+              size="lg"
+              className="float-right mt-5"
+
+            >
               MAKE PAYMENT
             </Button>
           </main>

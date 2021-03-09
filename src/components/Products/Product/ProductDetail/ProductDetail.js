@@ -126,12 +126,6 @@ const productDetail = (props) => {
                 </div>
               </Col>
             </Row>
-
-            {props.addedItem.map((item) => (
-              <ul>
-                <li>{item.name}</li>
-              </ul>
-            ))}
           </div>
         </div>
       ))}

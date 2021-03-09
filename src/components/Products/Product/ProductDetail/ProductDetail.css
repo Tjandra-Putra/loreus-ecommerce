@@ -1,41 +1,41 @@
 .breadcrumb {
-	background-color: unset !important;
-	margin: unset !important;
-	padding-left: unset !important;
-	padding-top: unset;
+  background-color: unset !important;
+  margin: unset !important;
+  padding-left: unset !important;
+  padding-top: unset;
 }
 
 #btn-add {
-	border-radius: 100px;
-	border: 1.5px solid black;
-	font-weight: 500;
-	/* position: absolute; */
-	/* bottom: 0;
+  border-radius: 100px;
+  border: 1.5px solid black;
+  font-weight: 500;
+  /* position: absolute; */
+  /* bottom: 0;
 	margin-bottom: 7vh; */
 }
 
 #btn-favourite {
-	border-radius: 100px;
-	border: 1.5px solid black;
-	font-weight: 500;
-	/* position: absolute;
+  border-radius: 100px;
+  border: 1.5px solid black;
+  font-weight: 500;
+  /* position: absolute;
 	bottom: 0; */
 }
 
 .breadcrumb-item a {
-	color: black !important;
+  color: black !important;
 }
 
 /* Style to change separator  */
 .breadcrumb-item + .breadcrumb-item::before {
-	content: ">";
+  content: ">";
 }
 
 .toast-header {
-	padding-left: unset;
+  padding-left: unset;
 }
 
 .toast-title {
-	font-weight: 400;
-	color: black;
+  font-weight: 400;
+  color: black;
 }

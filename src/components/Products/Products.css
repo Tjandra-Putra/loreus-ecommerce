@@ -1,0 +1,8 @@
+.toast-header {
+  padding-left: unset;
+}
+
+.toast-title {
+  font-weight: 400;
+  color: black;
+}
