@@ -1,3 +1,5 @@
+import * as actionTypes from "./actions";
+
 // =========== GLOBAL STATE ===========
 const initialState = {
   supportFormData: {
@@ -11,7 +13,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "SUPPORT_FORM_SUBMIT":
+    case actionTypes.SUPPORT_FORM_SUBMIT:
       return {
         ...state,
         supportFormData: {
@@ -22,7 +24,7 @@ const reducer = (state = initialState, action) => {
         },
       };
 
-    case "ADD_TO_CART":
+    case actionTypes.ADD_TO_CART:
       // Default value of quantity is 1 when cart is empty
       if (state.selectedItems.length === 0) {
         action.product.quantity = 1;
@@ -55,7 +57,7 @@ const reducer = (state = initialState, action) => {
         };
       }
 
-    case "EDIT_CART_QUANTITY":
+    case actionTypes.EDIT_CART_QUANTITY:
       // index value of item
       const itemIndex = state.selectedItems.findIndex((item) => {
         return item.id === action.itemId;
@@ -73,7 +75,7 @@ const reducer = (state = initialState, action) => {
         selectedItems: itemArray,
       };
 
-    case "REMOVE_CART_ITEM":
+    case actionTypes.REMOVE_CART_ITEM:
       const allItems = [...state.selectedItems];
       allItems.splice(action.index, 1);
 

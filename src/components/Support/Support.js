@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import "./Support.css";
 import phoneGif from "../../assets/Image/phone_calling.gif";
+import * as actionTypes from "../../store/actions";
 
 class Support extends Component {
   state = {
@@ -176,7 +177,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     submitFormHandler: (local_state) =>
       dispatch({
-        type: "SUPPORT_FORM_SUBMIT",
+        type: actionTypes.SUPPORT_FORM_SUBMIT,
         payload: {
           message: local_state.message,
           category: local_state.category,

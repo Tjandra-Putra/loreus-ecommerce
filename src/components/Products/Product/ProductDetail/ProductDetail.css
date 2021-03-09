@@ -39,3 +39,7 @@
   font-weight: 400;
   color: black;
 }
+
+.toast {
+  background-color: white !important;
+}

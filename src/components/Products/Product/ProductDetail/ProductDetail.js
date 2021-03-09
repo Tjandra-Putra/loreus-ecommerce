@@ -7,12 +7,13 @@ import {
   Button,
   Breadcrumb,
 } from "react-bootstrap";
-import { BrowserRouter as Router, Switch, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { connect } from "react-redux";
 
 import "./ProductDetail.css";
+import * as actionTypes from "../../../../store/actions";
 
 const productDetail = (props) => {
   let { prodId } = useParams(); // gets from path parameter, name must be the same for defined path and variable
@@ -147,7 +148,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addToCart: (item) =>
       dispatch({
-        type: "ADD_TO_CART",
+        type: actionTypes.ADD_TO_CART,
         product: item,
       }),
   };

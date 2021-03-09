@@ -13,6 +13,7 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 import "./Cart.css";
+import * as actionTypes from "../../store/actions";
 
 const cart = (props) => {
   const [isSubmitted, setSubmit] = useState();
@@ -171,12 +172,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     editCartQuantityHandler: (event, itemId) =>
       dispatch({
-        type: "EDIT_CART_QUANTITY",
+        type: actionTypes.EDIT_CART_QUANTITY,
         event: event,
         itemId: itemId,
       }),
     removeCartItemHandler: (index) =>
-      dispatch({ type: "REMOVE_CART_ITEM", index: index }),
+      dispatch({ type: actionTypes.REMOVE_CART_ITEM, index: index }),
   };
 };
 
