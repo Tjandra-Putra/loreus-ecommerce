@@ -7,15 +7,48 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Home from "./components/Home/Home";
 import Message from "./components/Message/Message";
+import Loader from "./components/Loader/Loader";
 
-// Lazy Loading - Suspense, Fallback, render. This is to enhance performance.
-const Support = React.lazy(() => import("./components/Support/Support"));
-const Cart = React.lazy(() => import("./components/Cart/Cart"));
-const Products = React.lazy(() => import("./components/Products/Products"));
-const Checkout = React.lazy(() => import("./components/Checkout/Checkout"));
-const ProductDetail = React.lazy(() =>
-  import("./components/Products/Product/ProductDetail/ProductDetail")
-);
+// Lazy Loading - Suspense, Fallback, render. This is to enhance performance. Only when component is need, it will be used.
+// === Normal === with no loader
+// const Support = React.lazy(() => import("./components/Support/Support"));
+
+// === With Loader ===
+const Support = React.lazy(() => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(import("./components/Support/Support")), 1000);
+  });
+});
+
+const Cart = React.lazy(() => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(import("./components/Cart/Cart")), 1000);
+  });
+});
+
+const Products = React.lazy(() => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(import("./components/Products/Products")), 1000);
+  });
+});
+
+const Checkout = React.lazy(() => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(import("./components/Checkout/Checkout")), 1000);
+  });
+});
+
+const ProductDetail = React.lazy(() => {
+  return new Promise((resolve) => {
+    setTimeout(
+      () =>
+        resolve(
+          import("./components/Products/Product/ProductDetail/ProductDetail")
+        ),
+      1000
+    );
+  });
+});
 
 class App extends Component {
   all_products = [
@@ -77,7 +110,7 @@ class App extends Component {
               exact
               path="/products"
               render={() => (
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<Loader />}>
                   <Products products={this.all_products} />
                 </Suspense>
               )}
@@ -87,7 +120,7 @@ class App extends Component {
               exact
               path="/cart"
               render={() => (
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<Loader />}>
                   <Cart />
                 </Suspense>
               )}
@@ -97,7 +130,7 @@ class App extends Component {
               exact
               path="/checkout"
               render={() => (
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<Loader />}>
                   <Checkout />
                 </Suspense>
               )}
@@ -107,7 +140,7 @@ class App extends Component {
               exact
               path="/support"
               render={() => (
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<Loader />}>
                   <Support />
                 </Suspense>
               )}
@@ -117,7 +150,7 @@ class App extends Component {
               exact
               path="/products/:prodId"
               render={() => (
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<Loader />}>
                   <ProductDetail products={this.all_products} />
                 </Suspense>
               )}

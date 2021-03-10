@@ -9,5 +9,6 @@
 
 .toast-custom {
   width: 14.5rem;
-  transform: translateY(5.9vh);
+  transform: translateY(3.5em);
+  background-color: white !important;
 }
