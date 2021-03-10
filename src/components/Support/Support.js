@@ -2,11 +2,17 @@ import React, { Component } from "react";
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 import { connect } from "react-redux";
 
+import Swal from "sweetalert2";
+
 import "./Support.css";
 import phoneGif from "../../assets/Image/phone_calling.gif";
 import * as actionTypes from "../../store/actions";
 
 class Support extends Component {
+  pattern = new RegExp(
+    /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
+  );
+
   state = {
     isNotSubmitted: true,
     formData: {
@@ -16,9 +22,19 @@ class Support extends Component {
     },
   };
 
+  sweetAlertModal = () => {
+    Swal.fire({
+      title: "Success",
+      icon: "success",
+      animation: true,
+      text: "Your message has been sent.",
+    });
+  };
+
   submitButton = () => {
     if (
       this.state.formData.email.length > 0 &&
+      this.pattern.test(this.state.formData.email) &&
       this.state.formData.message.length > 0 &&
       this.state.formData.category.length > 0
     ) {
@@ -26,7 +42,10 @@ class Support extends Component {
         <Button
           variant="dark"
           className="float-right"
-          onClick={() => this.props.submitFormHandler(this.state.formData)}
+          onClick={() => {
+            this.props.submitFormHandler(this.state.formData);
+            this.sweetAlertModal();
+          }}
           type="submit"
         >
           Send Message
