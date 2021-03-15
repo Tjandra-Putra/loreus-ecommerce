@@ -18,7 +18,7 @@ Installing dependencies
 > npm install
 ```
 
-Running the application
+### Running the application
 ```sh
 > npm start
 ```
