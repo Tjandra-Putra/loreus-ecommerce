@@ -1,4 +1,4 @@
-# React Framework
+# React.js + Node.js + MySQL
 
 ### Introduction
 Loreus is a fullstack ecommerce web application. It runs on react.js, node.js and redux.
