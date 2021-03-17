@@ -15,7 +15,7 @@ import trending_2 from "../../assets/Image/trending_2.jpg";
 import Message from "../Message/Message";
 
 const home = () => (
-  <React.Fragment>
+  <div className="home">
     <Container>
       <div className="hero">
         <Row>
@@ -57,46 +57,56 @@ const home = () => (
             </div>
           </Col>
         </Row>
-        <Row className="featured-product-wrapper">
-          <Col>
+        <Row className="featured-product-wrapper justify-content-center">
+          <Col xs={6} md={2}>
             <div className="featured-box text-center">
-              <img src={featured_1} className="img-fluid" alt="introImage" />
+              <div className="img-wrapper">
+                <img src={featured_1} className="img-fluid " alt="introImage" />
+              </div>
               <div>
                 <div className="product-title">Color-washed shirt</div>
                 <div className="product-price">S$30.99</div>
               </div>
             </div>
           </Col>
-          <Col>
+          <Col xs={6} md={2}>
             <div className="featured-box text-center">
-              <img src={featured_2} className="img-fluid" alt="introImage" />
+              <div className="img-wrapper">
+                <img src={featured_2} className="img-fluid " alt="introImage" />
+              </div>
               <div>
                 <div className="product-title">Color-washed shirt</div>
                 <div className="product-price">S$30.99</div>
               </div>
             </div>
           </Col>
-          <Col>
+          <Col xs={6} md={2}>
             <div className="featured-box text-center">
-              <img src={featured_3} className="img-fluid" alt="introImage" />
+              <div className="img-wrapper">
+                <img src={featured_3} className="img-fluid " alt="introImage" />
+              </div>
               <div>
                 <div className="product-title">Color-washed shirt</div>
                 <div className="product-price">S$30.99</div>
               </div>
             </div>
           </Col>
-          <Col>
+          <Col xs={6} md={2}>
             <div className="featured-box text-center">
-              <img src={featured_4} className="img-fluid" alt="introImage" />
+              <div className="img-wrapper">
+                <img src={featured_4} className="img-fluid " alt="introImage" />
+              </div>
               <div>
                 <div className="product-title">Color-washed shirt</div>
                 <div className="product-price">S$30.99</div>
               </div>
             </div>
           </Col>
-          <Col>
+          <Col xs={6} md={2}>
             <div className="featured-box text-center">
-              <img src={featured_5} className="img-fluid" alt="introImage" />
+              <div className="img-wrapper">
+                <img src={featured_5} className="img-fluid " alt="introImage" />
+              </div>
               <div>
                 <div className="product-title">Color-washed shirt</div>
                 <div className="product-price">S$30.99</div>
@@ -126,7 +136,7 @@ const home = () => (
               alt="introImage"
             />
             <div className="bottom-left-btn">
-              <div className="botton-left-title">Abigail Hoodie Summer</div>
+              <div className="bottom-left-title">Abigail Hoodie Summer</div>
               <Button variant="light" className="btn-trending">
                 Shop Now
               </Button>
@@ -139,7 +149,7 @@ const home = () => (
               alt="introImage"
             />
             <div className="bottom-left-btn">
-              <div className="botton-left-title">Abigail Engineered 23</div>
+              <div className="bottom-left-title">Abigail Engineered 23</div>
               <Button variant="light" className="btn-trending">
                 Shop Now
               </Button>
@@ -153,12 +163,12 @@ const home = () => (
           <Col>
             <h2>News Letter</h2>
             <div className="news-letter-description">
-              Get timely updates from your favorite products{" "}
+              Get timely updates from your favorite products
             </div>
 
             <div className="news-letter-wrapper">
               <Row>
-                <Col md={8} className="p-0">
+                <Col md={8} className="p-0" sm={12}>
                   <Form.Group>
                     <Form.Control
                       size="lg"
@@ -168,7 +178,7 @@ const home = () => (
                     />
                   </Form.Group>
                 </Col>
-                <Col md={4} className="p-0">
+                <Col md={4} className="p-0" sm={12}>
                   <Button
                     variant="dark"
                     size="lg"
@@ -183,7 +193,7 @@ const home = () => (
         </Row>
       </div>
     </Container>
-  </React.Fragment>
+  </div>
 );
 
 export default home;

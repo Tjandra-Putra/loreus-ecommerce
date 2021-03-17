@@ -111,7 +111,6 @@ const cart = (props) => {
       <Row>
         <Col md={8} className="">
           <h5>Bag</h5>
-
           <Table borderless hover>
             <tbody>{loadedProducts}</tbody>
           </Table>

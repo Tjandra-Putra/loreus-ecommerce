@@ -1,79 +1,79 @@
-.hero {
+.home .hero {
   margin-left: 2.2vw;
   margin-top: 2vh;
 }
 
-.left-area {
+.home .left-area {
   background-color: #f2f2f2;
   height: 38.9em;
   padding: 70px;
 }
 
-.right-area img {
+.home .right-area img {
   /* height: 78vh; */
 }
 
-.title {
+.home .title {
   font-size: 2.7em;
   font-weight: 500;
 }
 
-.sub-title {
+.home .sub-title {
   padding-top: 15vh;
   font-style: italic;
   font-weight: 500;
 }
 
-.description {
+.home .description {
   text-align: justify;
 }
 
-#btn-intro {
+.home #btn-intro {
   border-radius: 100px;
   border: 1.5px solid black;
   font-weight: 500;
 }
 
-.featured-product-wrapper {
+.home .featured-product-wrapper {
   margin-top: 5vh;
 }
 
-.featured {
+.home .featured {
   margin-top: 15vh;
 }
 
-.featured-description {
+.home .featured-description {
   max-width: 25rem;
   margin: auto;
   font-style: italic;
 }
 
-.product-title {
+.home .product-title {
   margin-top: 0.8rem;
 }
 
-.product-price {
-  font-weight: 500;
+.home .product-price {
+  font-weight: 600;
 }
 
-#featured-button {
+.home #featured-button {
   border-radius: 100px;
   border: 1.5px solid black;
   font-weight: 500;
   margin-top: 2rem;
 }
 
-.best-seller {
+.home .best-seller {
   margin-top: 15vh;
 }
 
-.bottom-left-btn {
+.home .bottom-left-btn {
   position: absolute;
   bottom: 30px;
   left: 50px;
 }
 
-.botton-left-title {
+.home .bottom-left-title {
   position: absolute;
   bottom: 70px;
   left: 10px;
@@ -82,29 +82,141 @@
   font-size: 2em;
 }
 
-.btn-trending {
+.home .btn-trending {
   border-radius: 100px;
 }
 
-.news-letter {
+.home .news-letter {
   margin-top: 15vh;
 }
 
-.news-letter-description {
+.home .news-letter-description {
   max-width: 25rem;
   margin: auto;
   font-style: italic;
 }
 
-.news-letter-wrapper {
+.home .news-letter-wrapper {
   margin-top: 5vh;
   /* max-width: 45vw; */
 }
 
-.form-input {
-  width: 30vw;
+.home .form-input {
+  width: 27em;
 }
 
-.btn-news-letter {
+.home .btn-news-letter {
   border-radius: 0px !important;
+}
+
+.home .img-wrapper {
+  height: 12.5em;
+}
+
+/** PIXEL 2 **/
+@media only screen and (min-device-width: 411px) and (max-device-width: 731px) {
+  .home .hero {
+    margin-left: unset;
+    margin-top: unset;
+  }
+
+  .home .sub-title {
+    padding-top: 10vh;
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .home .bottom-left-title {
+    font-size: 1em;
+    padding-bottom: 1.5rem;
+    position: unset;
+    max-width: 150px;
+  }
+
+  .home .btn-trending {
+    /* left: -2px !important; */
+    position: absolute;
+    bottom: -18px;
+  }
+
+  .home .featured-box {
+    padding-top: 1rem;
+  }
+
+  .home .form-input {
+    width: 90%;
+    left: 0;
+    float: unset !important;
+    margin-right: 1.2rem !important;
+  }
+
+  .home .btn-news-letter {
+    width: 90%;
+    margin-left: 1.2rem !important;
+    margin-top: -0.5rem;
+  }
+
+  .home h2 {
+    font-size: 24px;
+  }
+
+  .home .img-wrapper {
+    height: 13.5em;
+  }
+}
+
+/** iPhone 6/7/8 **/
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+  .home .hero {
+    margin-left: unset;
+    margin-top: unset;
+  }
+
+  .home .title {
+    font-size: 33px !important;
+  }
+
+  .home .sub-title {
+    padding-top: 10vh;
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .home .bottom-left-title {
+    font-size: 1em;
+    padding-bottom: 1.5rem;
+    position: unset;
+    max-width: 150px;
+  }
+
+  .home .btn-trending {
+    /* left: -2px !important; */
+    position: absolute;
+    bottom: -18px;
+  }
+
+  .home .featured-box {
+    padding-top: 1rem;
+  }
+
+  .home .form-input {
+    width: 90%;
+    left: 0;
+    float: unset !important;
+    margin-right: 1.2rem !important;
+  }
+
+  .home .btn-news-letter {
+    width: 90%;
+    margin-left: 1.2rem !important;
+    margin-top: -0.5rem;
+  }
+
+  .home h2 {
+    font-size: 24px;
+  }
+
+  .home .img-wrapper {
+    height: 13.5em;
+  }
 }

@@ -23,7 +23,31 @@ const navbar = (props) => {
             LOREUS<span className="text-danger">.</span>
           </Navbar.Brand>
         </LinkContainer>
+        <LinkContainer to="/cart">
+          <Nav.Link className="d-sm-block d-lg-none d-md-none" id="toggle-cart">
+            <img
+              src={bagImg}
+              className="img-fluid"
+              alt="introImage"
+              width="25"
+            />
+            <div className="quantity">{props.selectedItems.length}</div>
+          </Nav.Link>
+        </LinkContainer>
+        <Nav.Link
+          to="/favourite"
+          className="d-sm-block d-lg-none d-md-none"
+          id="toggle-favourite"
+        >
+          <img
+            src={heartImg}
+            className="img-fluid"
+            alt="introImage"
+            width="25"
+          />
+        </Nav.Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
         <Navbar.Collapse id="responsive-navbar-nav">
           <ul className="navbar-nav mr-auto">
             <LinkContainer to="/products">
@@ -42,7 +66,7 @@ const navbar = (props) => {
             </LinkContainer>
           </ul>
           <ul className="navbar-nav ml-auto nav-icons">
-            <Nav.Link to="/favourite">
+            <Nav.Link to="/favourite" className="d-none d-sm-block">
               <img
                 src={heartImg}
                 className="img-fluid"
@@ -51,7 +75,7 @@ const navbar = (props) => {
               />
             </Nav.Link>
             <LinkContainer to="/cart">
-              <Nav.Link>
+              <Nav.Link className="d-none d-sm-block">
                 <img
                   src={bagImg}
                   className="img-fluid"
@@ -61,7 +85,7 @@ const navbar = (props) => {
                 <div className="quantity">{props.selectedItems.length}</div>
               </Nav.Link>
             </LinkContainer>
-            <Nav.Link to="/login">
+            <Nav.Link to="/login" className="d-none d-sm-block">
               <img
                 src={userImg}
                 className="img-fluid"
