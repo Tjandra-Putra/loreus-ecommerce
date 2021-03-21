@@ -18,6 +18,7 @@
 	border-radius: 100px;
 	border: 1.5px solid black;
 	font-weight: 500;
+	font-size: 1rem;
 	/* position: absolute;
 	bottom: 0; */
 }
@@ -55,4 +56,57 @@
 	position: absolute;
 	left: 0;
 	right: 0;
+}
+
+/** PIXEL 2 **/
+@media only screen and (min-device-width: 411px) and (max-device-width: 731px) {
+	.product-detail .container-buttons {
+		bottom: unset;
+		position: unset;
+		left: unset;
+		right: unset;
+	}
+
+	.product-detail .productMsgInfo {
+		padding-top: 1rem;
+	}
+
+	.product-detail .toast {
+		position: unset;
+		top: 0;
+		left: 0 !important;
+		right: 0 !important;
+		max-width: 100%;
+	}
+
+	.product-detail .productName {
+		font-size: 1.4rem !important;
+	}
+
+	.product-detail .productPrice {
+		font-weight: 500 !important;
+		font-size: 1.2rem !important;
+	}
+}
+
+/** iPhone 6/7/8 **/
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+	.product-detail .container-buttons {
+		bottom: unset;
+		position: unset;
+		left: unset;
+		right: unset;
+	}
+
+	.product-detail .productMsgInfo {
+		padding-top: 1rem;
+	}
+
+	.product-detail .toast {
+		position: unset;
+		top: 0;
+		left: 0 !important;
+		right: 0 !important;
+		max-width: 100%;
+	}
 }

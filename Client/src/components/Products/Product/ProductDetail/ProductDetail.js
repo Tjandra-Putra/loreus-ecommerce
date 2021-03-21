@@ -13,6 +13,8 @@ const productDetail = (props) => {
 
 	const product = props.products.filter((item) => item.id === prodId);
 
+	const [ addToBag, setAddToBag ] = useState('Add to Bag');
+
 	const [ show, setShow ] = useState(false);
 
 	const toastMsg = () => {
@@ -68,28 +70,32 @@ const productDetail = (props) => {
 							))}
 							<div class="d-flex justify-content-center">
 								<div class="p-2 bd-highlight">
-									<Button
-										className=""
-										variant="outline-dark"
-										id="btn-favourite"
-										size="lg"
-										block
-										style={{ fontSize: '17px' }}
-									>
-										View Bag ({props.addedItem.length})
-									</Button>
+									<LinkContainer to="/cart">
+										<Button
+											className=""
+											variant="outline-dark"
+											id="btn-favourite"
+											size="lg"
+											block
+											style={{ fontSize: '17px' }}
+										>
+											View Bag ({props.addedItem.length})
+										</Button>
+									</LinkContainer>
 								</div>
 								<div class="p-2 bd-highlight">
-									<Button
-										className="px-4"
-										variant="dark"
-										id="btn-favourite"
-										size="lg"
-										block
-										style={{ fontSize: '17px' }}
-									>
-										Checkout
-									</Button>
+									<LinkContainer to="/checkout">
+										<Button
+											className="px-4"
+											variant="dark"
+											id="btn-favourite"
+											size="lg"
+											block
+											style={{ fontSize: '17px' }}
+										>
+											Checkout
+										</Button>
+									</LinkContainer>
 								</div>
 							</div>
 						</Toast.Body>
@@ -121,9 +127,13 @@ const productDetail = (props) => {
 								<img src={item.imgUrl} className="img-fluid" alt="introImage" width="520" />
 							</Col>
 							<Col xs={12} md={6}>
-								<h6 style={{ fontWeight: '500 ', color: 'rgb(250, 84, 0)' }}>{item.productMsgInfo}</h6>
-								<h2>{item.name}</h2>
-								<h5 style={{ fontWeight: '500 ' }}> S${item.price}</h5>
+								<h6 style={{ fontWeight: '500 ', color: 'rgb(250, 84, 0)' }} className="productMsgInfo">
+									{item.productMsgInfo}
+								</h6>
+								<h2 className="productName">{item.name}</h2>
+								<h5 style={{ fontWeight: '500 ' }} className="productPrice">
+									S${item.price}
+								</h5>
 								<p>{item.desc}</p>
 
 								<div className="container-buttons">
@@ -136,9 +146,10 @@ const productDetail = (props) => {
 										onClick={() => {
 											props.addToCart(item);
 											setShow(true);
+											setAddToBag('Added To Bag!');
 										}}
 									>
-										Add to bag
+										{addToBag}
 									</Button>
 									<Button className="py-3" variant="outline-dark" id="btn-favourite" size="lg" block>
 										Favourite <i className="far fa-heart" style={{ fontSize: '18px' }} />

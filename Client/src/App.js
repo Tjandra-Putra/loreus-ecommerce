@@ -16,31 +16,31 @@ import Loader from './components/Loader/Loader';
 // === With Loader ===
 const Support = React.lazy(() => {
 	return new Promise((resolve) => {
-		setTimeout(() => resolve(import('./components/Support/Support')), 1000);
+		setTimeout(() => resolve(import('./components/Support/Support')), 400);
 	});
 });
 
 const Cart = React.lazy(() => {
 	return new Promise((resolve) => {
-		setTimeout(() => resolve(import('./components/Cart/Cart')), 1000);
+		setTimeout(() => resolve(import('./components/Cart/Cart')), 400);
 	});
 });
 
 const Products = React.lazy(() => {
 	return new Promise((resolve) => {
-		setTimeout(() => resolve(import('./components/Products/Products')), 1000);
+		setTimeout(() => resolve(import('./components/Products/Products')), 400);
 	});
 });
 
 const Checkout = React.lazy(() => {
 	return new Promise((resolve) => {
-		setTimeout(() => resolve(import('./components/Checkout/Checkout')), 1000);
+		setTimeout(() => resolve(import('./components/Checkout/Checkout')), 400);
 	});
 });
 
 const ProductDetail = React.lazy(() => {
 	return new Promise((resolve) => {
-		setTimeout(() => resolve(import('./components/Products/Product/ProductDetail/ProductDetail')), 1000);
+		setTimeout(() => resolve(import('./components/Products/Product/ProductDetail/ProductDetail')), 400);
 	});
 });
 
@@ -58,7 +58,7 @@ class App extends Component {
 		},
 		{
 			id: '2',
-			name: 'Tie Shoulder Bow Knot',
+			name: 'Tie Shoulder Bow',
 			desc:
 				'product_2 The Nike Air Force 1 Shadow SE puts a playful twist on a classic b-ball design. Using a layered approach, doubling the branding and exaggerating the midsole, it highlights AF-1 DNA with a bold look. The pixelated Swoosh designs add fresh expressions to the branding, while the holographic details level up your look.',
 			price: 78.25,
