@@ -1,0 +1,28 @@
+.register .left-box {
+	height: 38.5em;
+	box-shadow: rgba(0, 0, 0, 0.15) -1.95px 1.95px 2.6px;
+	padding: 1rem;
+}
+
+.register .title {
+	font-size: 2em;
+	text-align: center;
+}
+
+.register .register-container {
+	border: 1px solid black;
+	/* width: 28em; */
+}
+
+.register .register-text {
+	text-align: center;
+	margin-top: 1rem;
+	color: #6c757d !important;
+	font-size: 80%;
+}
+
+.register .or {
+	text-align: center;
+	color: grye !important;
+	margin: 1rem 0;
+}
