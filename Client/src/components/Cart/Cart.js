@@ -87,7 +87,7 @@ const cart = (props) => {
 			<Row>
 				<Col md={8} className="">
 					<h5>Bag</h5>
-					<Table borderless hover responsive>
+					<Table borderless hover responsive="sm">
 						<tbody>{loadedProducts}</tbody>
 					</Table>
 				</Col>

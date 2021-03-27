@@ -3,6 +3,7 @@ import './Register.css';
 import google from '../../assets/Image/google.png';
 import hamza from '../../assets/Image/hamza.jpg';
 
+import { LinkContainer } from 'react-router-bootstrap';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 
 const register = () => {
@@ -34,7 +35,10 @@ const register = () => {
 						</Button>
 
 						<div className="register-text">
-							Already have an account?<a href=""> Login here</a>
+							Already have an account?
+							<LinkContainer to="/login">
+								<a> Login here</a>
+							</LinkContainer>
 						</div>
 
 						<div className="or">──────── &nbsp; or &nbsp; ────────</div>

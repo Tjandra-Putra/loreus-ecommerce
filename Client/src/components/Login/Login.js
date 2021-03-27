@@ -4,6 +4,7 @@ import google from '../../assets/Image/google.png';
 import daria from '../../assets/Image/daria.jpg';
 import godi from '../../assets/Image/godi.jpg';
 
+import { LinkContainer } from 'react-router-bootstrap';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 
 const login = () => {
@@ -41,7 +42,10 @@ const login = () => {
 						</Button>
 
 						<div className="register-text">
-							Not registered yet?<a href=""> Create new account</a>
+							Not registered yet?
+							<LinkContainer to="/register">
+								<a> Create new account</a>
+							</LinkContainer>
 						</div>
 
 						<div className="or">──────── &nbsp; or &nbsp; ────────</div>
