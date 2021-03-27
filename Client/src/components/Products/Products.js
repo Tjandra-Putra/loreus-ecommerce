@@ -118,7 +118,7 @@ const products = (props) => {
 							value={category}
 							onChange={(event) => {
 								categoryHandler(event);
-								setShow(true);
+								// setShow(true);
 							}}
 						>
 							<option>Recommended</option>

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import './Navbar.css';
@@ -56,9 +56,23 @@ const navbar = (props) => {
 								<div className="quantity">{props.selectedItems.length}</div>
 							</Nav.Link>
 						</LinkContainer>
-						<Nav.Link to="/login" className="d-none d-sm-block">
+						{/* <Nav.Link to="/login" className="d-none d-sm-block">
 							<img src={userImg} className="img-fluid" alt="introImage" width="25" />
-						</Nav.Link>
+						</Nav.Link> */}
+
+						<NavDropdown
+							title={<img src={userImg} className="img-fluid" alt="introImage" width="25" />}
+							id="dropdown-basic"
+						>
+							<LinkContainer to="/login">
+								<NavDropdown.Item>Sign In</NavDropdown.Item>
+							</LinkContainer>
+							<LinkContainer to="/register">
+								<NavDropdown.Item href="#action/3.2">Register</NavDropdown.Item>
+							</LinkContainer>
+							<NavDropdown.Divider />
+							<NavDropdown.Item href="#action/3.4">Help</NavDropdown.Item>
+						</NavDropdown>
 					</ul>
 				</Navbar.Collapse>
 			</Container>

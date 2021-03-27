@@ -1,5 +1,6 @@
 .Navbar {
 	background-color: white !important;
+	z-index: 9;
 }
 
 .navbar-toggler-icon {
@@ -36,6 +37,14 @@
 .brand {
 	font-size: 1.8em !important;
 	font-weight: 600;
+}
+
+#dropdown-basic::after{
+	display: none; 
+ }
+
+.nav-item:hover .dropdown-menu {
+	display: block !important;
 }
 
 /** PIXEL 2 **/

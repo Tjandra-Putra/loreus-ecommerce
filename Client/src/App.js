@@ -44,6 +44,18 @@ const ProductDetail = React.lazy(() => {
 	});
 });
 
+const Login = React.lazy(() => {
+	return new Promise((resolve) => {
+		setTimeout(() => resolve(import('./components/Login/Login')), 400);
+	});
+});
+
+const Register = React.lazy(() => {
+	return new Promise((resolve) => {
+		setTimeout(() => resolve(import('./components/Register/Register')), 400);
+	});
+});
+
 class App extends Component {
 	all_products = [
 		{
@@ -136,6 +148,26 @@ class App extends Component {
 							render={() => (
 								<Suspense fallback={<Loader />}>
 									<Support />
+								</Suspense>
+							)}
+						/>
+
+						<Route
+							exact
+							path="/login"
+							render={() => (
+								<Suspense fallback={<Loader />}>
+									<Login />
+								</Suspense>
+							)}
+						/>
+
+						<Route
+							exact
+							path="/register"
+							render={() => (
+								<Suspense fallback={<Loader />}>
+									<Register />
 								</Suspense>
 							)}
 						/>
