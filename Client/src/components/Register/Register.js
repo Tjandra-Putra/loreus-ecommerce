@@ -5,7 +5,7 @@ import hamza from '../../assets/Image/hamza.jpg';
 
 import { LinkContainer } from 'react-router-bootstrap';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
-import { useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form/dist/index.ie11';
 
 const register = () => {
 	const { register, handleSubmit, errors, watch } = useForm();
