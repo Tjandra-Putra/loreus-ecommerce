@@ -79,7 +79,7 @@ const cart = (props) => {
 	}
 
 	return (
-		<Container>
+		<Container className="cart">
 			{redirect}
 			<Alert variant="dark" dismissible style={{ backgroundColor: 'rgb(247, 247, 247)', border: 'none' }}>
 				HAVE A PROMO CODE? You will be able to apply it on the payment page during checkout.

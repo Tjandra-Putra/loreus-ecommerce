@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import Axios from 'axios';
 
 import Swal from 'sweetalert2';
 
@@ -18,8 +19,26 @@ class Support extends Component {
 		formData: {
 			email: '',
 			category: '',
-			message: ''
+			message: '',
+			dateTime: '',
+			btnClick: 0
 		}
+	};
+
+	componentDidMount = () => {
+		// 	// Getting todays date and time
+		let today = new Date();
+		let date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
+		let time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+		let dateTime = date + ', ' + time;
+
+		this.setState((prevState) => ({
+			formData: {
+				// object that we want to update
+				...prevState.formData, // keep all other key-value pairs
+				dateTime: dateTime // update the value of specific key
+			}
+		}));
 	};
 
 	sweetAlertModal = () => {
@@ -67,8 +86,33 @@ class Support extends Component {
 	};
 
 	handleSubmitForm = (event) => {
-		event.preventDefault(); // prevents reload when button is set to type = submit
-		console.log(this.state.formData.email, this.state.formData.message, this.state.formData.category);
+		// prevents reload when button is set to type = submit
+		event.preventDefault();
+
+		Axios.post('http://localhost:3001/api/insert-support', {
+			email: this.state.formData.email,
+			category: this.state.formData.category,
+			message: this.state.formData.message,
+			dateTime: this.state.formData.dateTime
+		}).then(() => {
+			alert('successful insert');
+		});
+
+		// updates the number of times the button is clicked
+		this.setState((prevState) => ({
+			formData: {
+				// object that we want to update
+				...prevState.formData, // keep all other key-value pairs
+				btnClick: 1 // update the value of specific key
+			}
+		}));
+
+		console.log(
+			this.state.formData.email,
+			this.state.formData.message,
+			this.state.formData.category,
+			this.state.formData.dateTime
+		);
 	};
 
 	handleEmailChange = (event) => {
@@ -102,6 +146,23 @@ class Support extends Component {
 	};
 
 	render() {
+		// Disable the submit button after user has sent an enquiry
+		if (this.state.formData.btnClick !== 0) {
+			this.submitButton = () => {
+				return (
+					<Button
+						variant="dark"
+						className="float-right"
+						onClick={() => this.props.submitFormHandler(this.state.formData)}
+						type="submit"
+						disabled
+					>
+						Send Message
+					</Button>
+				);
+			};
+		}
+
 		return (
 			<div className="support">
 				<Container fluid className="banner text-center text-white">
