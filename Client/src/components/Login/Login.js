@@ -23,7 +23,7 @@ const login = () => {
 		// console.log(data);
 		// console.log(errors);
 
-		Axios.post('http://localhost:3001/api/retrieve-user-login', {
+		Axios.post('http://localhost:3001/api/insert-login', {
 			user_email: data.email,
 			user_password: data.password
 		}).then((response) => {
@@ -40,7 +40,7 @@ const login = () => {
 	// only called once every page refrehses
 	useEffect(() => {
 		// making axios request to see if user is logged in
-		Axios.get('http://localhost:3001/api/retrieve-user-login').then((response) => {
+		Axios.get('http://localhost:3001/api/retrieve-login').then((response) => {
 			if (response.data.loggedIn === true) {
 				setLoginStatus(response.data.user[0].email);
 			}

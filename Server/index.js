@@ -39,8 +39,8 @@ const db = mysql.createPool({
 	database: 'react-loreus-db'
 });
 
-// ======== RETRIEVE ========
-app.post('/api/retrieve-user-login', (req, res) => {
+// ================ User Route ================
+app.post('/api/insert-login', (req, res) => {
 	const user_email = req.body.user_email;
 	const user_password = req.body.user_password;
 
@@ -56,7 +56,7 @@ app.post('/api/retrieve-user-login', (req, res) => {
 					console.log(req.session.user);
 					res.send(result);
 				} else {
-					res.send({ message: 'Wrong email/password combination!' });
+					res.send({ message: 'Authentication failed. Please check your credentials and try again.' });
 				}
 			});
 		} else {
@@ -65,7 +65,7 @@ app.post('/api/retrieve-user-login', (req, res) => {
 	});
 });
 
-app.get('/api/retrieve-user-login', (req, res) => {
+app.get('/api/retrieve-login', (req, res) => {
 	if (req.session.user) {
 		res.send({ loggedIn: true, user: req.session.user });
 	} else {
@@ -73,22 +73,7 @@ app.get('/api/retrieve-user-login', (req, res) => {
 	}
 });
 
-// ======== INSERT ========
-app.post('/api/insert-support', (req, res) => {
-	// Getting data from front end
-	const email = req.body.email;
-	const category = req.body.category;
-	const message = req.body.message;
-	const dateTime = req.body.dateTime;
-
-	const sqlInsert = 'INSERT INTO support (email, category, message, dateTime) VALUES (?,?,?,?)';
-	db.query(sqlInsert, [ email, category, message, dateTime ], (err, result) => {
-		console.log(result);
-		console.log(err);
-	});
-});
-
-app.post('/api/insert-register-account', (req, res) => {
+app.post('/api/create-customer-account', (req, res) => {
 	// Getting data from front end
 	const user_email = req.body.user_email;
 	const user_password = req.body.user_password;
@@ -106,6 +91,21 @@ app.post('/api/insert-register-account', (req, res) => {
 	});
 
 	const sqlInsert = 'INSERT INTO user (email, password) VALUES (?,?)';
+});
+
+// ================ Support Route ================
+app.post('/api/create-support-enquiry', (req, res) => {
+	// Getting data from front end
+	const email = req.body.email;
+	const category = req.body.category;
+	const message = req.body.message;
+	const dateTime = req.body.dateTime;
+
+	const sqlInsert = 'INSERT INTO support (email, category, message, dateTime) VALUES (?,?,?,?)';
+	db.query(sqlInsert, [ email, category, message, dateTime ], (err, result) => {
+		console.log(result);
+		console.log(err);
+	});
 });
 
 app.listen(3001, () => {

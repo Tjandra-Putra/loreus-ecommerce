@@ -18,7 +18,7 @@ const register = () => {
 		console.log(data);
 		console.log(errors);
 
-		Axios.post('http://localhost:3001/api/insert-register-account', {
+		Axios.post('http://localhost:3001/api/create-customer-account', {
 			user_email: data.email,
 			user_password: data.password
 		}).then(() => {

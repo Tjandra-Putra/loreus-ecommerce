@@ -89,7 +89,7 @@ class Support extends Component {
 		// prevents reload when button is set to type = submit
 		event.preventDefault();
 
-		Axios.post('http://localhost:3001/api/insert-support', {
+		Axios.post('http://localhost:3001/api/create-support-enquiry', {
 			email: this.state.formData.email,
 			category: this.state.formData.category,
 			message: this.state.formData.message,
