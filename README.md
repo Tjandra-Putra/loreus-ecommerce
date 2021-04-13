@@ -2,6 +2,7 @@
 
 ### Introduction
 This is a full stack ecommerce website. It demonstrates common features such as shopping cart, payment and delivery. 
+live demo: https://loreus.netlify.app
 
 ### Architecture
 | Technology   | Type           | 
