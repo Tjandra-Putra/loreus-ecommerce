@@ -1,7 +1,12 @@
+.register {
+	margin-top: 2em;
+}
+
 .register .left-box {
 	height: 38.5em;
 	box-shadow: rgba(0, 0, 0, 0.15) -1.95px 1.95px 2.6px;
 	padding: 1rem;
+	overflow: auto;
 }
 
 .register .title {

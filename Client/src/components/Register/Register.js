@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import './Register.css';
 import google from '../../assets/Image/google.png';
 import hamza from '../../assets/Image/hamza.jpg';
+import Axios from 'axios';
 
 import { LinkContainer } from 'react-router-bootstrap';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
@@ -16,6 +17,15 @@ const register = () => {
 	const onSubmit = (data) => {
 		console.log(data);
 		console.log(errors);
+
+		Axios.post('http://localhost:3001/api/insert-register-account', {
+			user_email: data.email,
+			user_password: data.password
+		}).then(() => {
+			alert('successful insert');
+		});
+
+		console.log(data.email);
 	};
 
 	return (
